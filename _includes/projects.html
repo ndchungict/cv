@@ -1,0 +1,17 @@
+<section id="projects" class="cv-section">
+  <h2 data-i18n="nav.projects">Dự án</h2>
+
+  {% for project in site.data.projects %}
+  <div class="cv-entry">
+    <h3 class="entry-title">{{ project.name }}</h3>
+    <p class="entry-description">{{ project.description }}</p>
+    <ul class="tech-list">
+      {% for tech in project.technologies %}<li>{{ tech }}</li>{% endfor %}
+    </ul>
+    <div class="project-links">
+      {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener">Live Demo</a>{% endif %}
+      {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

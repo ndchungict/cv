@@ -1,0 +1,18 @@
+- title: "Senior Software Engineer"
+  company: "Tech Corp"
+  url: "https://techcorp.example.com"
+  start: "2021-03"
+  end: "Present"
+  responsibilities:
+    - "Led development of microservices architecture serving 1M+ users"
+    - "Improved API response time by 40% through caching and query optimization"
+    - "Mentored 3 junior engineers and conducted code reviews"
+
+- title: "Software Engineer"
+  company: "Startup Inc"
+  start: "2018-06"
+  end: "2021-02"
+  responsibilities:
+    - "Built and maintained React frontend applications"
+    - "Developed RESTful APIs using Node.js and Express"
+    - "Implemented CI/CD pipelines with GitHub Actions"

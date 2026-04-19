@@ -1,0 +1,12 @@
+<section id="skills" class="cv-section">
+  <h2 data-i18n="nav.skills">Kỹ năng</h2>
+
+  {% for category in site.data.skills %}
+  <div class="skill-category">
+    <h3 class="category-name">{{ category.category }}</h3>
+    <ul>
+      {% for item in category.items %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>

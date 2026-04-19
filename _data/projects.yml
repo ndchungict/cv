@@ -1,0 +1,28 @@
+- name: "E-Commerce Platform"
+  description: "A full-stack e-commerce platform with product catalog, shopping cart, and payment integration."
+  technologies:
+    - "React"
+    - "Node.js"
+    - "PostgreSQL"
+    - "Stripe API"
+  url: "https://shop.example.com"
+  github: "https://github.com/nguyenvana/ecommerce"
+
+- name: "CV Website Generator"
+  description: "A Jekyll-based static site generator for creating professional CV websites deployable to GitHub Pages."
+  technologies:
+    - "Jekyll"
+    - "Ruby"
+    - "JavaScript"
+    - "CSS3"
+  github: "https://github.com/nguyenvana/cv-generator"
+
+- name: "Task Management API"
+  description: "RESTful API for task management with authentication, real-time updates, and team collaboration features."
+  technologies:
+    - "Python"
+    - "FastAPI"
+    - "PostgreSQL"
+    - "WebSockets"
+  url: "https://tasks-api.example.com"
+  github: "https://github.com/nguyenvana/task-api"

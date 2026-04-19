@@ -1,0 +1,25 @@
+<section id="experience" class="cv-section">
+  <h2 data-i18n="nav.experience">Kinh nghiệm</h2>
+
+  {% for entry in site.data.experience %}
+  <div class="cv-entry">
+    <h3 class="entry-title">{{ entry.title }}</h3>
+
+    <div class="entry-company">
+      {% if entry.url %}
+        <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.company }}</a>
+      {% else %}
+        {{ entry.company }}
+      {% endif %}
+    </div>
+
+    <span class="entry-period">{{ entry.start }} – {{ entry.end }}</span>
+
+    <ul>
+      {% for item in entry.responsibilities %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>

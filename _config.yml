@@ -1,0 +1,8 @@
+title: "Nguyen Van A - CV"
+description: "Personal CV website"
+baseurl: "/jekyll-cv-website"
+url: "https://username.github.io"
+theme: minima
+markdown: kramdown
+plugins:
+  - jekyll-feed

@@ -1,0 +1,12 @@
+<section id="education" class="cv-section">
+  <h2 data-i18n="nav.education">Học vấn</h2>
+
+  {% for entry in site.data.education %}
+  <div class="cv-entry">
+    <h3 class="entry-title">{{ entry.degree }}</h3>
+    <p class="entry-institution">{{ entry.institution }}</p>
+    <span class="entry-year">{{ entry.year }}</span>
+    {% if entry.description %}<p class="entry-description">{{ entry.description }}</p>{% endif %}
+  </div>
+  {% endfor %}
+</section>

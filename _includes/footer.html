@@ -1,0 +1,14 @@
+<footer>
+  <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.profile.name }}</p>
+  <nav class="footer-links">
+    {% if site.data.profile.email %}
+      <a href="mailto:{{ site.data.profile.email }}">Email</a>
+    {% endif %}
+    {% if site.data.profile.linkedin %}
+      <a href="{{ site.data.profile.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    {% endif %}
+    {% if site.data.profile.github %}
+      <a href="{{ site.data.profile.github }}" target="_blank" rel="noopener">GitHub</a>
+    {% endif %}
+  </nav>
+</footer>

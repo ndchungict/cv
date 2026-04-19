@@ -1,0 +1,20 @@
+- category: "Programming Languages"
+  items:
+    - "JavaScript / TypeScript"
+    - "Python"
+    - "Ruby"
+    - "Go"
+
+- category: "Frameworks & Libraries"
+  items:
+    - "React"
+    - "Node.js / Express"
+    - "Ruby on Rails"
+    - "Jekyll"
+
+- category: "Tools & Platforms"
+  items:
+    - "Git / GitHub"
+    - "Docker"
+    - "AWS (EC2, S3, RDS)"
+    - "PostgreSQL / Redis"
