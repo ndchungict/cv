@@ -257,6 +257,39 @@ li {
   color: var(--color-text-muted);
 }
 
+/* --- Education (sidebar) --- */
+
+.sidebar-education-entry {
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.sidebar-edu-institution {
+  display: block;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.sidebar-edu-degree {
+  display: block;
+  color: var(--color-text-muted);
+}
+
+.sidebar-edu-period {
+  display: block;
+  color: var(--color-accent);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+}
+
+.sidebar-edu-desc {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin-top: 2px;
+}
+
 /* --- References --- */
 
 .sidebar-reference {

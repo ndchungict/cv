@@ -72,6 +72,30 @@ layout: default
     </div>
     {% endif %}
 
+    <!-- Education -->
+    {% if site.data.education %}
+    <div class="sidebar-section">
+      <h2 class="sidebar-section-title" data-i18n="nav.education">
+        <span class="sidebar-section-icon" aria-hidden="true">🎓</span>
+        Học Vấn
+      </h2>
+      {% for entry in site.data.education %}
+      <div class="sidebar-education-entry">
+        <strong class="sidebar-edu-institution">{{ entry.institution }}</strong>
+        <span class="sidebar-edu-degree">{{ entry.degree }}</span>
+        {% if entry.start or entry.end %}
+        <span class="sidebar-edu-period">{{ entry.start }} – {{ entry.end }}</span>
+        {% elsif entry.year %}
+        <span class="sidebar-edu-period">{{ entry.year }}</span>
+        {% endif %}
+        {% if entry.description %}
+        <span class="sidebar-edu-desc">{{ entry.description }}</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     <!-- References (hidden) -->
     {% comment %}
     {% if site.data.profile.references %}
@@ -144,9 +168,6 @@ layout: default
       <p class="main-summary">{{ site.data.profile.summary }}</p>
       {% endif %}
     </div>
-
-    <!-- Education -->
-    {% include education.html %}
 
     <!-- Experience -->
     {% include experience.html %}
