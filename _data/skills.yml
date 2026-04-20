@@ -1,20 +1,11 @@
-- category: "Programming Languages"
-  items:
-    - "JavaScript / TypeScript"
-    - "Python"
-    - "Ruby"
-    - "Go"
+- category: "Tìm kiếm và chọn lọc thông tin"
+  description: "Tổng hợp tin tức khá tốt từ các trang web."
 
-- category: "Frameworks & Libraries"
-  items:
-    - "React"
-    - "Node.js / Express"
-    - "Ruby on Rails"
-    - "Jekyll"
+- category: "Viết theo chủ đề"
+  description: "Viết tốt chủ đề Tour du lịch, Giới thiệu sản phẩm."
 
-- category: "Tools & Platforms"
-  items:
-    - "Git / GitHub"
-    - "Docker"
-    - "AWS (EC2, S3, RDS)"
-    - "PostgreSQL / Redis"
+- category: "Giao tiếp"
+  description: "Dễ dàng hòa nhập vào môi trường làm việc mới."
+
+- category: "Tin học văn phòng"
+  description: "Gõ 10 ngón tốt, thành thạo căn chỉnh Word."

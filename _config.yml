@@ -1,8 +1,7 @@
-title: "Nguyen Van A - CV"
-description: "Personal CV website"
+title: "Nguyễn Thị Trúc Mai - CV"
+description: "CV cá nhân - Nhân Viên Content Marketing"
 baseurl: "/jekyll-cv-website"
 url: "https://username.github.io"
-theme: minima
 markdown: kramdown
 plugins:
   - jekyll-feed

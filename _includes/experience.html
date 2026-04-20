@@ -1,25 +1,52 @@
-<section id="experience" class="cv-section">
-  <h2 data-i18n="nav.experience">Kinh nghiệm</h2>
+<section id="experience" class="main-section">
+  <h2 class="main-section-title" data-i18n="nav.experience">
+    <span class="section-icon" aria-hidden="true">💼</span>
+    Kinh Nghiệm Làm Việc
+  </h2>
 
   {% for entry in site.data.experience %}
   <div class="cv-entry">
-    <h3 class="entry-title">{{ entry.title }}</h3>
-
-    <div class="entry-company">
-      {% if entry.url %}
-        <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.company }}</a>
-      {% else %}
-        {{ entry.company }}
-      {% endif %}
+    <div class="entry-header">
+      <div class="entry-header-left">
+        <h3 class="entry-company">
+          {% if entry.url %}
+            <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.company }}</a>
+          {% else %}
+            {{ entry.company }}
+          {% endif %}
+        </h3>
+        <p class="entry-title-role"><em>{{ entry.title }}</em></p>
+      </div>
+      <span class="entry-period">{{ entry.start }} - {{ entry.end }}</span>
     </div>
 
-    <span class="entry-period">{{ entry.start }} – {{ entry.end }}</span>
-
-    <ul>
+    {% if entry.responsibilities %}
+    <ul class="entry-list">
       {% for item in entry.responsibilities %}
-        <li>{{ item }}</li>
+      <li>{{ item }}</li>
       {% endfor %}
     </ul>
+    {% endif %}
+
+    {% if entry.responsibilities_groups %}
+    {% for group in entry.responsibilities_groups %}
+    <p class="entry-group-title">{{ group.group }}</p>
+    <ul class="entry-list">
+      {% for item in group.items %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endif %}
+
+    {% if entry.achievements %}
+    <p class="entry-achievements-label">Những điều đạt được:</p>
+    <ul class="entry-list">
+      {% for item in entry.achievements %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
   {% endfor %}
 </section>

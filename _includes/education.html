@@ -1,12 +1,25 @@
-<section id="education" class="cv-section">
-  <h2 data-i18n="nav.education">Học vấn</h2>
+<section id="education" class="main-section">
+  <h2 class="main-section-title" data-i18n="nav.education">
+    <span class="section-icon" aria-hidden="true">🎓</span>
+    Học Vấn
+  </h2>
 
   {% for entry in site.data.education %}
   <div class="cv-entry">
-    <h3 class="entry-title">{{ entry.degree }}</h3>
-    <p class="entry-institution">{{ entry.institution }}</p>
-    <span class="entry-year">{{ entry.year }}</span>
-    {% if entry.description %}<p class="entry-description">{{ entry.description }}</p>{% endif %}
+    <div class="entry-header">
+      <div class="entry-header-left">
+        <h3 class="entry-institution">{{ entry.institution }}</h3>
+        <p class="entry-degree">{{ entry.degree }}</p>
+      </div>
+      {% if entry.start or entry.end %}
+      <span class="entry-period">{{ entry.start }} - {{ entry.end }}</span>
+      {% elsif entry.year %}
+      <span class="entry-period">{{ entry.year }}</span>
+      {% endif %}
+    </div>
+    {% if entry.description %}
+    <p class="entry-description">{{ entry.description }}</p>
+    {% endif %}
   </div>
   {% endfor %}
 </section>

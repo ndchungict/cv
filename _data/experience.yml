@@ -1,18 +1,26 @@
-- title: "Senior Software Engineer"
-  company: "Tech Corp"
-  url: "https://techcorp.example.com"
-  start: "2021-03"
-  end: "Present"
+- title: "Thực tập sinh Content Marketing"
+  company: "Công Ty Cổ Phần JOBOKO"
+  start: "01/2020"
+  end: "06/2020"
   responsibilities:
-    - "Led development of microservices architecture serving 1M+ users"
-    - "Improved API response time by 40% through caching and query optimization"
-    - "Mentored 3 junior engineers and conducted code reviews"
+    - "Viết tagline và nội dung cho các sản phẩm của công ty."
+    - "Viết content các ngành hàng quà tặng, mẹ và bé: 7 bài viết/tuần."
+    - "Xây dựng nội dung Social Media: Facebook, Tiktok."
+  achievements:
+    - "Được quản lý nhận xét là người có tính thần ham học hỏi, cầu tiến."
 
-- title: "Software Engineer"
-  company: "Startup Inc"
-  start: "2018-06"
-  end: "2021-02"
-  responsibilities:
-    - "Built and maintained React frontend applications"
-    - "Developed RESTful APIs using Node.js and Express"
-    - "Implemented CI/CD pipelines with GitHub Actions"
+- title: "Nhân viên Content Marketing"
+  company: "Công Ty TNHH JOBOKO"
+  start: "08/2020"
+  end: "10/2022"
+  responsibilities_groups:
+    - group: "Content marketing (80%)"
+      items:
+        - "Viết bài content marketing các chủ đề tour du lịch, cơ hội việc làm: 20 bài/tuần."
+        - "Đăng tải bài viết lên website của công ty: 2-3 bài viết/ngày."
+        - "Xây dựng và quản lý nội dung Social Media: 1 Fanpage Facebook, 1 kênh Youtube, 1 kênh Tiktok."
+    - group: "Chỉnh sửa hình ảnh, video (20%)"
+      items:
+        - "Edit hình ảnh và video cơ bản để hoàn thiện các bài content đăng lên mạng xã hội."
+  achievements:
+    - "Đạt 100/80 bài viết chuẩn SEO/1 tháng, vượt KPI 20%."

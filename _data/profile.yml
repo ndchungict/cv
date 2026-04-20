@@ -1,7 +1,29 @@
-name: "Nguyen Van A"
-title: "Software Engineer"
-photo: "/assets/images/avatar.jpg"
-summary: "Experienced software engineer with 5+ years building scalable web applications. Passionate about clean code, performance, and developer experience."
-email: "nguyenvana@example.com"
-linkedin: "https://linkedin.com/in/nguyenvana"
-github: "https://github.com/nguyenvana"
+name: "Nguyễn Thị Trúc Mai"
+title: "Nhân Viên Content Marketing"
+photo: ""
+summary: "Tôi muốn ứng tuyển vào vị trí Content Marketing tại công ty X-Alpha. Là người sáng tạo, yêu viết lách, tôi có đam mê với công việc Marketing. Với 2 năm kinh nghiệm ở vị trí Nhân viên Content Marketing, tôi đã tích lũy được những kỹ năng nhất định về sáng tạo nội dung, rất hy vọng được làm việc và cống hiến tại công ty. Tôi sẽ cố gắng nỗ lực học hỏi các nghiệp vụ chuyên sâu về mảng nội dung để phát triển năng lực, hướng đến vị trí Content Team Leader trong 3 năm tới."
+
+phone: "0123456789"
+dob: "30/02/1998"
+address: "Nghĩa Đô, Cầu Giấy, Hà Nội"
+email: "hotro.joboko@gmail.com"
+facebook: "fb.com/jobokofanpage"
+linkedin: ""
+github: ""
+
+references:
+  - name: "Anh Hoàng Tuấn Trường"
+    position: "Trưởng phòng Marketing, Công ty TNHH JobOKO"
+    phone: "0988998899"
+
+hobbies:
+  - icon: "📷"
+    name: "Chụp ảnh, làm video ngắn"
+  - icon: "🏍️"
+    name: "Đi phượt"
+  - icon: "📖"
+    name: "Viết truyện ngắn"
+
+other_info: |
+  Link bài viết đã xuất bản:
+  - https://vn.joboko.com/blog/cong-viec-cua-nhan-vien-content-marketing-la-gi-nsi465
