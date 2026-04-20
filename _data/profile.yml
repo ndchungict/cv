@@ -1,29 +1,20 @@
-name: "Nguyễn Thị Trúc Mai"
-title: "Nhân Viên Content Marketing"
-photo: ""
-summary: "Tôi muốn ứng tuyển vào vị trí Content Marketing tại công ty X-Alpha. Là người sáng tạo, yêu viết lách, tôi có đam mê với công việc Marketing. Với 2 năm kinh nghiệm ở vị trí Nhân viên Content Marketing, tôi đã tích lũy được những kỹ năng nhất định về sáng tạo nội dung, rất hy vọng được làm việc và cống hiến tại công ty. Tôi sẽ cố gắng nỗ lực học hỏi các nghiệp vụ chuyên sâu về mảng nội dung để phát triển năng lực, hướng đến vị trí Content Team Leader trong 3 năm tới."
+name: "Nguyễn Đức Chung"
+title: "Automation Test Engineer"
+photo: "/imgs/avatar.jpeg"  # Đặt đường dẫn ảnh tại đây, ví dụ: /assets/avatar.jpg
+summary: "Với hơn 7 năm kinh nghiệm trong lĩnh vực kiểm thử phần mềm, tôi có chuyên môn sâu về kiểm thử tự động với các công nghệ như Selenium, Appium, Serenity BDD, Cypress và Playwright. Tôi đã từng xây dựng framework kiểm thử, tích hợp CI/CD và dẫn dắt nhóm tại các tổ chức tài chính lớn như TPBank và MB Bank. Mục tiêu của tôi là trở thành một chuyên gia kiểm thử hàng đầu, không ngừng nghiên cứu và áp dụng công nghệ mới vào quy trình kiểm thử."
 
-phone: "0123456789"
-dob: "30/02/1998"
-address: "Nghĩa Đô, Cầu Giấy, Hà Nội"
-email: "hotro.joboko@gmail.com"
-facebook: "fb.com/jobokofanpage"
+phone: "0943.313.848"
+dob: "04/07/1991"
+address: "Ngõ 332, Đường Lĩnh Nam, Hà Nội"
+email: "ndchungict@gmail.com"
+facebook: ""
 linkedin: ""
-github: ""
-
-references:
-  - name: "Anh Hoàng Tuấn Trường"
-    position: "Trưởng phòng Marketing, Công ty TNHH JobOKO"
-    phone: "0988998899"
+github: "ndchungict.github.io"
 
 hobbies:
-  - icon: "📷"
-    name: "Chụp ảnh, làm video ngắn"
-  - icon: "🏍️"
-    name: "Đi phượt"
-  - icon: "📖"
-    name: "Viết truyện ngắn"
-
-other_info: |
-  Link bài viết đã xuất bản:
-  - https://vn.joboko.com/blog/cong-viec-cua-nhan-vien-content-marketing-la-gi-nsi465
+  - icon: "🔬"
+    name: "Nghiên cứu công nghệ mới"
+  - icon: "💻"
+    name: "Lập trình và tự động hóa"
+  - icon: "📚"
+    name: "Đọc sách"

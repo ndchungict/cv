@@ -142,8 +142,8 @@ li {
 }
 
 .sidebar-photo {
-  width: 90px;
-  height: 90px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--color-border);
@@ -157,8 +157,8 @@ li {
   justify-content: center;
   gap: 4px;
   cursor: pointer;
-  width: 90px;
-  height: 90px;
+  width: 200px;
+  height: 200px;
   border: 2px dashed #cccccc;
   border-radius: 50%;
   background-color: #eeeeee;
@@ -733,13 +733,13 @@ li {
   }
 
   .sidebar-photo {
-    width: 70pt;
-    height: 70pt;
+    width: 90pt;
+    height: 90pt;
   }
 
   .sidebar-photo-placeholder {
-    width: 70pt;
-    height: 70pt;
+    width: 90pt;
+    height: 90pt;
   }
 
   .sidebar-photo-placeholder svg {

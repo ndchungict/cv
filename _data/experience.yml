@@ -1,26 +1,42 @@
-- title: "Thực tập sinh Content Marketing"
-  company: "Công Ty Cổ Phần JOBOKO"
-  start: "01/2020"
-  end: "06/2020"
+- title: "Automation Tester"
+  company: "Ngân hàng thương mại cổ phần Tiên Phong (TPBank)"
+  start: "09/2022"
+  end: "Now"
   responsibilities:
-    - "Viết tagline và nội dung cho các sản phẩm của công ty."
-    - "Viết content các ngành hàng quà tặng, mẹ và bé: 7 bài viết/tuần."
-    - "Xây dựng nội dung Social Media: Facebook, Tiktok."
-  achievements:
-    - "Được quản lý nhận xét là người có tính thần ham học hỏi, cầu tiến."
+    - "Xây dựng và định nghĩa framework kiểm thử."
+    - "Lập kế hoạch test, phân bổ nguồn lực, review testcase, test scripts."
+    - "Phát triển các kịch bản kiểm thử tự động theo kế hoạch kiểm thử."
+    - "Hỗ trợ kỹ thuật và phát triển team."
+    - "Nghiên cứu, triển khai áp dụng AI vào automation test."
+    - "Hỗ trợ tư vấn kỹ thuật."
+    - "Tham gia đào tạo, phát triển team."
 
-- title: "Nhân viên Content Marketing"
-  company: "Công Ty TNHH JOBOKO"
-  start: "08/2020"
-  end: "10/2022"
-  responsibilities_groups:
-    - group: "Content marketing (80%)"
-      items:
-        - "Viết bài content marketing các chủ đề tour du lịch, cơ hội việc làm: 20 bài/tuần."
-        - "Đăng tải bài viết lên website của công ty: 2-3 bài viết/ngày."
-        - "Xây dựng và quản lý nội dung Social Media: 1 Fanpage Facebook, 1 kênh Youtube, 1 kênh Tiktok."
-    - group: "Chỉnh sửa hình ảnh, video (20%)"
-      items:
-        - "Edit hình ảnh và video cơ bản để hoàn thiện các bài content đăng lên mạng xã hội."
-  achievements:
-    - "Đạt 100/80 bài viết chuẩn SEO/1 tháng, vượt KPI 20%."
+- title: "Automation Test mentor"
+  company: "Ngân hàng cổ phần quân đội (MBBank)"
+  start: "02/2020"
+  end: "09/2022"
+  responsibilities:
+    - "Xây dựng và định nghĩa framework kiểm thử."
+    - "Lập kế hoạch test, phân bổ nguồn lực, review testcase, test scripts."
+    - "Phát triển các kịch bản kiểm thử tự động theo kế hoạch kiểm thử."
+    - "Theo dõi tiến độ kiểm thử, quản lý và báo cáo các lỗi."
+    - "Hỗ trợ tư vấn kỹ thuật và phát triển team"
+
+- title: "Tester (Automation + Tự Manual)"
+  company: "Công ty TNHH MB Shinsei Finance (Mcredit)"
+  start: "2018"
+  end: "2020"
+  responsibilities:
+    - "Đọc tài liệu giải pháp và thiết kế, phối hợp với các nhóm để hiểu yêu cầu sản phẩm."
+    - "Nghiên cứu công nghệ để áp dụng vào thực tế."
+    - "Thực hiện kiểm thử sản phẩm."
+    - "Trao đổi và hướng dẫn khách hàng sử dụng sản phẩm."
+
+- title: "Nhân viên IT"
+  company: "Công ty TNHH Thương mại VHC"
+  start: "10/2013"
+  end: "09/2018"
+  responsibilities:
+    - "Hỗ trợ kỹ thuật và hướng dẫn khách hàng cài đặt, sử dụng các sản phẩm công nghệ."
+    - "Giới thiệu và tư vấn sản phẩm, giải đáp thắc mắc của khách hàng."
+    - "Kiểm tra hệ thống internet, máy tính và máy in."

@@ -1,11 +1,14 @@
-- category: "Tìm kiếm và chọn lọc thông tin"
-  description: "Tổng hợp tin tức khá tốt từ các trang web."
+- category: "Coding"
+  description: "Java, Kotlin JavaScripts, Groovy, TypeScript, SQL"
 
-- category: "Viết theo chủ đề"
-  description: "Viết tốt chủ đề Tour du lịch, Giới thiệu sản phẩm."
+- category: "Testing Framework"
+  description: "Selenium, Playwright, Cucumber, Serenity BDD, Katalon, Cypress, Playwright, Appium"
 
-- category: "Giao tiếp"
-  description: "Dễ dàng hòa nhập vào môi trường làm việc mới."
+- category: "Công cụ"
+  description: "Postman, Soap UI, Jmeter, Jira, Confluence"
 
-- category: "Tin học văn phòng"
-  description: "Gõ 10 ngón tốt, thành thạo căn chỉnh Word."
+- category: "Devops"
+  description: "Git, Jenkins, Docker(basic)"
+
+- category: "AI"
+  description: "Kiro, Github Copilot, ChatGPT, NotebookLM, MCP server"
