@@ -72,7 +72,8 @@ layout: default
     </div>
     {% endif %}
 
-    <!-- References -->
+    <!-- References (hidden) -->
+    {% comment %}
     {% if site.data.profile.references %}
     <div class="sidebar-section">
       <h2 class="sidebar-section-title">
@@ -88,6 +89,7 @@ layout: default
       {% endfor %}
     </div>
     {% endif %}
+    {% endcomment %}
 
     <!-- Hobbies -->
     {% if site.data.profile.hobbies %}
