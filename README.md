@@ -1,67 +1,101 @@
-# Nguyen Van A - CV Website
+# Nguyễn Đức Chung — CV Website
 
-A personal CV website built with Jekyll, deployable to GitHub Pages.
+CV cá nhân xây dựng bằng Jekyll, hỗ trợ đa ngôn ngữ (VI / EN / ZH), có thể deploy lên GitHub Pages.
 
-## Local Development
+## Tính năng
 
-### Prerequisites
+- **Hai cột** — sidebar (ảnh, liên hệ, kỹ năng, học vấn) + nội dung chính (kinh nghiệm, dự án)
+- **Đa ngôn ngữ** — chuyển đổi VI / EN / ZH ngay trên trang, lưu lựa chọn vào `localStorage`
+- **In CV** — in trực tiếp từ trình duyệt, tự động ẩn các nút điều khiển
+- **Xuất PDF** — tạo file PDF qua `html2pdf.js`, tên file tự động theo tên + ngày
+- **Top menu bar** — thanh điều hướng sticky nằm ngoài khung CV, chứa nút đổi ngôn ngữ, in và xuất PDF
+- **Responsive** — hiển thị tốt trên desktop, tablet và mobile
+- **Nội dung tách biệt** — toàn bộ dữ liệu CV lưu trong `_data/*.yml`, không cần chỉnh HTML
 
-- Ruby 3.0 or higher
-- Bundler (`gem install bundler`)
+## Cấu trúc dự án
 
-### Setup
+```
+.
+├── _data/              # Dữ liệu CV (YAML)
+│   ├── profile.yml     # Thông tin cá nhân, ảnh, liên hệ, sở thích
+│   ├── experience.yml  # Kinh nghiệm làm việc
+│   ├── education.yml   # Học vấn
+│   ├── skills.yml      # Kỹ năng theo nhóm
+│   ├── projects.yml    # Dự án nổi bật
+│   └── i18n.yml        # Nhãn UI cho VI / EN / ZH
+├── _includes/          # Các partial HTML (experience, projects, ...)
+├── _layouts/
+│   ├── default.html    # Layout gốc (head + body)
+│   └── home.html       # Layout CV hai cột + top menu
+├── assets/
+│   ├── css/main.css    # Toàn bộ stylesheet
+│   └── js/main.js      # i18n, exportPDF, initLanguage
+├── imgs/               # Ảnh đại diện
+├── tests/              # Unit tests (Vitest + jsdom)
+├── _config.yml         # Cấu hình Jekyll
+└── index.html          # Entry point
+```
+
+## Cập nhật nội dung CV
+
+Chỉnh sửa các file YAML trong `_data/` — không cần động vào HTML:
+
+| File | Nội dung |
+|---|---|
+| `_data/profile.yml` | Họ tên, ảnh, tóm tắt, liên hệ, sở thích |
+| `_data/experience.yml` | Lịch sử công việc |
+| `_data/education.yml` | Học vấn |
+| `_data/skills.yml` | Kỹ năng theo nhóm |
+| `_data/projects.yml` | Dự án nổi bật |
+| `_data/i18n.yml` | Nhãn UI cho VI / EN / ZH |
+
+## Phát triển cục bộ
+
+### Yêu cầu
+
+- Ruby 3.0+
+- Bundler: `gem install bundler`
+- Node.js (để chạy tests)
+
+### Cài đặt
 
 ```bash
 bundle install
+npm install
 ```
 
-### Run locally
+### Chạy local
 
 ```bash
 bundle exec jekyll serve
 ```
 
-The site will be available at `http://localhost:4000/jekyll-cv-website`.
+Truy cập tại `http://localhost:4000/jekyll-cv-website`.
 
-To serve with live reload:
+Với live reload:
 
 ```bash
 bundle exec jekyll serve --livereload
 ```
 
-## GitHub Pages Deployment
-
-1. Push this repository to GitHub.
-2. Go to **Settings → Pages** in your repository.
-3. Under **Source**, select the `main` branch and click **Save**.
-4. GitHub Pages will automatically build and deploy the site using Jekyll.
-5. Your site will be available at `https://<username>.github.io/jekyll-cv-website`.
-
-> **Note:** Update `url` and `baseurl` in `_config.yml` to match your GitHub username and repository name before deploying.
-
-## `.nojekyll` Usage
-
-By default, GitHub Pages runs Jekyll automatically on your repository. This project relies on that behavior.
-
-If you ever pre-build the site locally and push the `_site/` directory directly (e.g., via a CI/CD pipeline), add a `.nojekyll` file to the root of the deployed branch to tell GitHub Pages to skip its own Jekyll processing:
+### Chạy tests
 
 ```bash
-touch .nojekyll
+npm test
 ```
 
-This is only needed when deploying pre-built static files. For standard Jekyll-based deployments (the default for this project), do **not** add `.nojekyll`.
+## Deploy lên GitHub Pages
 
-## Updating CV Content
+1. Push repository lên GitHub.
+2. Vào **Settings → Pages** của repository.
+3. Chọn **Source**: nhánh `main`, thư mục `/ (root)`, nhấn **Save**.
+4. GitHub Pages tự build và deploy bằng Jekyll.
+5. Site sẽ có tại `https://<username>.github.io/jekyll-cv-website`.
 
-All CV content is stored in YAML files under `_data/`:
+> Cập nhật `url` và `baseurl` trong `_config.yml` cho khớp với username và tên repository của bạn trước khi deploy.
 
-| File | Content |
-|---|---|
-| `_data/profile.yml` | Personal info, photo, summary, contact links |
-| `_data/experience.yml` | Work history |
-| `_data/education.yml` | Academic background |
-| `_data/skills.yml` | Skills grouped by category |
-| `_data/projects.yml` | Notable projects |
-| `_data/i18n.yml` | UI labels for VI / EN / ZH |
+## Ghi chú về `.nojekyll`
 
-Edit these files to update your CV without touching any HTML templates.
+Dự án này dùng Jekyll build mặc định của GitHub Pages — **không** cần file `.nojekyll`.
+
+Chỉ thêm `.nojekyll` nếu bạn pre-build `_site/` cục bộ và push trực tiếp lên branch deploy (ví dụ qua CI/CD pipeline).

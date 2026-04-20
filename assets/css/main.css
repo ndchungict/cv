@@ -104,6 +104,52 @@ li {
 }
 
 /* =============================================================================
+   TOP MENU BAR — outside the CV frame
+   ============================================================================= */
+
+.top-menu {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.top-menu-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--cv-max-width);
+  margin: 0 auto;
+  padding: 0.5rem var(--space-lg);
+  gap: var(--space-md);
+}
+
+.top-menu-brand {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.top-menu-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.top-menu-divider {
+  width: 1px;
+  height: 1.25rem;
+  background-color: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* =============================================================================
    CV WRAPPER — Two-column layout
    ============================================================================= */
 
@@ -670,9 +716,21 @@ li {
   .entry-period {
     padding-top: 0;
   }
-}
 
-/* =============================================================================
+  .top-menu-inner {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .top-menu-divider {
+    display: none;
+  }
+
+  .top-menu-controls {
+    gap: var(--space-sm);
+  }
+}/* =============================================================================
    PRINT STYLESHEET
    ============================================================================= */
 
@@ -684,6 +742,7 @@ li {
 
   /* Hide toolbar */
   .no-print,
+  .top-menu,
   .cv-toolbar,
   .language-switcher,
   .cv-actions,

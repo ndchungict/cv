@@ -2,6 +2,25 @@
 layout: default
 ---
 
+<!-- ===== TOP MENU BAR (outside CV frame) ===== -->
+<nav class="top-menu no-print" role="navigation" aria-label="CV controls">
+  <div class="top-menu-inner">
+    <div class="top-menu-brand">📄 CV</div>
+    <div class="top-menu-controls">
+      <div class="language-switcher" role="group" aria-label="Chọn ngôn ngữ">
+        <button onclick="applyLanguage('vi')" data-lang="vi" aria-pressed="true">VI</button>
+        <button onclick="applyLanguage('en')" data-lang="en" aria-pressed="false">EN</button>
+        <button onclick="applyLanguage('zh')" data-lang="zh" aria-pressed="false">ZH</button>
+      </div>
+      <div class="top-menu-divider" aria-hidden="true"></div>
+      <div class="cv-actions">
+        <button class="btn-print" data-i18n="buttons.print" onclick="window.print()">In CV</button>
+        <button class="btn-export" data-i18n="buttons.export_pdf" onclick="exportPDF()">Xuất PDF</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <div class="cv-wrapper">
 
   <!-- ===== SIDEBAR (LEFT COLUMN) ===== -->
@@ -146,19 +165,6 @@ layout: default
 
   <!-- ===== MAIN CONTENT (RIGHT COLUMN) ===== -->
   <main class="cv-main">
-
-    <!-- Language switcher + action buttons (hidden in print) -->
-    <div class="cv-toolbar no-print">
-      <div class="language-switcher">
-        <button onclick="applyLanguage('vi')" data-lang="vi" aria-pressed="true">VI</button>
-        <button onclick="applyLanguage('en')" data-lang="en" aria-pressed="false">EN</button>
-        <button onclick="applyLanguage('zh')" data-lang="zh" aria-pressed="false">ZH</button>
-      </div>
-      <div class="cv-actions">
-        <button class="btn-print" data-i18n="buttons.print" onclick="window.print()">In CV</button>
-        <button class="btn-export" data-i18n="buttons.export_pdf" onclick="exportPDF()">Xuất PDF</button>
-      </div>
-    </div>
 
     <!-- Profile header -->
     <div class="main-profile-header">
