@@ -269,27 +269,57 @@ function initLanguage() {
 // ---------------------------------------------------------------------------
 
 /**
- * Builds the export filename from a profile name and a date.
- * Spaces in the name are replaced with underscores; non-alphanumeric/underscore
- * characters are removed.
+ * Builds the export filename in the format: yyyy-MM-dd-Name-Parts-LANG.pdf
+ * Uses name_latin from i18n data when available (required for non-Latin scripts
+ * like Chinese). Falls back to NFD-normalizing the display name.
  *
- * @param {string} name - Profile name (e.g. "Nguyen Van A").
+ * @param {string} name - Profile display name (e.g. "Nguyễn Đức Chung", "阮德鍾").
  * @param {Date}   date - Date to embed in the filename.
- * @returns {string} e.g. "Nguyen_Van_A_CV_2024-01-15.pdf"
+ * @param {string} lang - Language code: 'vi', 'en', 'zh'.
+ * @returns {string} e.g. "2026-04-21-Nguyen-Duc-Chung-VI.pdf"
  */
-function getExportFilename(name, date) {
-  const sanitized = name
-    .replace(/\s+/g, '_')
-    .replace(/[^A-Za-z0-9_\u00C0-\u024F\u1E00-\u1EFF]/g, '');
-  const dateStr = date.toISOString().split('T')[0];
-  return sanitized + '_CV_' + dateStr + '.pdf';
+function getExportFilename(name, date, lang) {
+  // Prefer the pre-defined Latin name from i18n data (handles CJK scripts)
+  var latinName = null;
+  try {
+    var langData = I18N_DATA[lang];
+    if (langData && langData.profile && langData.profile.name_latin) {
+      latinName = langData.profile.name_latin;
+    }
+  } catch (e) { /* ignore */ }
+
+  var namePart;
+  if (latinName) {
+    // Sanitize: keep only alphanumeric and hyphens
+    namePart = latinName.replace(/[^A-Za-z0-9\-]/g, '');
+  } else {
+    // Fallback: normalize accented/Vietnamese characters to ASCII
+    namePart = name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')  // strip combining diacritics
+      .replace(/đ/gi, 'd')              // handle đ/Đ not covered by NFD
+      .replace(/\s+/g, '-')             // spaces → hyphens
+      .replace(/[^A-Za-z0-9\-]/g, ''); // remove remaining non-ASCII
+  }
+
+  // Format date as yyyy-MM-dd
+  var y = date.getFullYear();
+  var m = String(date.getMonth() + 1).padStart(2, '0');
+  var d = String(date.getDate()).padStart(2, '0');
+  var dateStr = y + '-' + m + '-' + d;
+
+  var langCode = (lang || 'VI').toUpperCase();
+
+  return dateStr + '-' + namePart + '-' + langCode + '.pdf';
 }
 
 /**
  * Generates and downloads a PDF of the CV using html2pdf.js.
- * - Disables the export button and shows a loading label while generating.
- * - Clones the <main> element and strips UI-only elements from the clone.
- * - Restores the button in a finally block regardless of success or failure.
+ * - Captures the full .cv-wrapper (both sidebar + main) to preserve the
+ *   two-column layout and all colours.
+ * - Temporarily hides UI-only elements (toolbar, nav) instead of cloning,
+ *   so that all computed styles and CSS variables are intact.
+ * - Restores everything in a finally block regardless of success or failure.
  */
 async function exportPDF() {
   // Guard: html2pdf must be loaded
@@ -299,15 +329,16 @@ async function exportPDF() {
   }
 
   // Resolve the export button
-  const exportBtn = document.querySelector('.btn-export');
-  const originalText = exportBtn ? exportBtn.textContent : '';
-  const originalDisabled = exportBtn ? exportBtn.disabled : false;
+  var exportBtn = document.querySelector('.btn-export');
+  var originalText = exportBtn ? exportBtn.textContent : '';
+  var originalDisabled = exportBtn ? exportBtn.disabled : false;
 
   // Determine the "exporting" label from the current language
-  let exportingLabel = 'Đang tạo...';
+  var exportingLabel = 'Đang tạo...';
+  var currentLang = DEFAULT_LANG;
   try {
-    const currentLang = getStoredLanguage() || DEFAULT_LANG;
-    const langData = I18N_DATA[currentLang];
+    currentLang = getStoredLanguage() || DEFAULT_LANG;
+    var langData = I18N_DATA[currentLang];
     if (langData && langData.buttons && langData.buttons.exporting) {
       exportingLabel = langData.buttons.exporting;
     }
@@ -321,51 +352,84 @@ async function exportPDF() {
     exportBtn.textContent = exportingLabel;
   }
 
+  // Elements to hide during capture (UI-only, not part of CV content)
+  var uiSelectors = [
+    '.top-menu',
+    '.cv-toolbar',
+    '.language-switcher',
+    '.cv-actions',
+    '.btn-print',
+    '.btn-export',
+  ];
+  var hiddenEls = [];
+
   try {
     // Resolve profile name for the filename
-    let profileName = 'CV';
-    const nameEl = document.querySelector('header h1') ||
-                   document.querySelector('[data-profile-name]');
+    var profileName = 'CV';
+    var nameEl = document.getElementById('profile-name') ||
+                 document.querySelector('.main-name') ||
+                 document.querySelector('h1');
     if (nameEl) {
       profileName = nameEl.textContent.trim() || profileName;
     }
 
-    const filename = getExportFilename(profileName, new Date());
+    var filename = getExportFilename(profileName, new Date(), currentLang);
 
-    // Clone the main content element (fall back to body)
-    const sourceEl = document.querySelector('main') || document.body;
-    const clone = sourceEl.cloneNode(true);
-
-    // Remove UI-only elements from the clone
-    const selectorsToRemove = [
-      'nav',
-      '.language-switcher',
-      '.btn-print',
-      '.btn-export',
-      '.cv-actions',
-    ];
-    selectorsToRemove.forEach(function (selector) {
-      clone.querySelectorAll(selector).forEach(function (el) {
-        el.parentNode.removeChild(el);
+    // Temporarily hide UI-only elements so they don't appear in the PDF
+    uiSelectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (el) {
+        if (el.style.display !== 'none') {
+          el.dataset.pdfHidden = '1';
+          el.style.display = 'none';
+          hiddenEls.push(el);
+        }
       });
     });
 
-    // html2pdf options
-    const options = {
-      margin: 10,
+    // Capture the full CV wrapper (sidebar + main) — preserves 2-column layout
+    var sourceEl = document.querySelector('.cv-wrapper') || document.querySelector('main') || document.body;
+
+    // Temporarily remove box-shadow and margin so it renders cleanly
+    var origBoxShadow = sourceEl.style.boxShadow;
+    var origMargin = sourceEl.style.margin;
+    sourceEl.style.boxShadow = 'none';
+    sourceEl.style.margin = '0';
+
+    // html2pdf options — high scale for crisp text, exact colour reproduction
+    var options = {
+      margin: [8, 8, 8, 8],
       filename: filename,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+      },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { avoid: '.cv-entry' },
+      pagebreak: { mode: ['avoid-all', 'css'], avoid: '.cv-entry' },
     };
 
-    await html2pdf().set(options).from(clone).save();
+    try {
+      await html2pdf().set(options).from(sourceEl).save();
+    } finally {
+      // Always restore wrapper styles
+      sourceEl.style.boxShadow = origBoxShadow;
+      sourceEl.style.margin = origMargin;
+    }
+
   } catch (err) {
     console.error('PDF export failed:', err);
     alert('Xuất PDF thất bại. Vui lòng thử lại hoặc dùng "In CV".');
   } finally {
-    // Always restore the button
+    // Restore all hidden UI elements
+    hiddenEls.forEach(function (el) {
+      el.style.display = '';
+      delete el.dataset.pdfHidden;
+    });
+
+    // Restore the export button
     if (exportBtn) {
       exportBtn.disabled = originalDisabled;
       exportBtn.textContent = originalText;

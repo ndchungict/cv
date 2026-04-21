@@ -19,6 +19,7 @@ vi:
     achievements_label: "Những điều đạt được:"
   profile:
     name: "Nguyễn Đức Chung"
+    name_latin: "Nguyen-Duc-Chung"
     title: "Automation Test Engineer"
     summary: "Với 9 năm kinh nghiệm trong lĩnh vực kiểm thử phần mềm, tôi có chuyên môn sâu về kiểm thử tự động với các công nghệ như Selenium, Appium, Serenity BDD, Cypress và Playwright. Tôi đã từng xây dựng framework kiểm thử, tích hợp CI/CD và dẫn dắt nhóm tại các tổ chức tài chính lớn như TPBank và MB Bank. Mục tiêu của tôi là trở thành một chuyên gia kiểm thử hàng đầu, không ngừng nghiên cứu và áp dụng công nghệ mới vào quy trình kiểm thử."
     address: "Ngõ 332, Đường Lĩnh Nam, Hà Nội"
@@ -147,6 +148,7 @@ en:
     achievements_label: "Achievements:"
   profile:
     name: "Nguyen Duc Chung"
+    name_latin: "Nguyen-Duc-Chung"
     title: "Automation Test Engineer"
     summary: "With 9 years of experience in software testing, I have deep expertise in test automation using technologies such as Selenium, Appium, Serenity BDD, Cypress, and Playwright. I have built testing frameworks, integrated CI/CD pipelines, and led teams at major financial institutions including TPBank and MB Bank. My goal is to become a leading testing expert, continuously researching and applying new technologies to the testing process."
     address: "Lane 332, Linh Nam Street, Hanoi"
@@ -275,6 +277,7 @@ zh:
     achievements_label: "主要成就："
   profile:
     name: "阮德鍾"
+    name_latin: "Ruan-De-Zhong"
     title: "自动化测试工程师"
     summary: "拥有9年软件测试经验，深入掌握使用Selenium、Appium、Serenity BDD、Cypress和Playwright等技术的自动化测试。曾在TPBank和MB Bank等大型金融机构构建测试框架、集成CI/CD流水线并带领团队。我的目标是成为顶尖的测试专家，不断研究并将新技术应用于测试流程。"
     address: "河内灵南路332巷"
