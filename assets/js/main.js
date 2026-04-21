@@ -139,7 +139,6 @@ function renderProjects(langData) {
       : '';
 
     return '<div class="cv-entry">' +
-      '<span class="entry-period">' + escapeHtml(project.period) + '</span>' +
       '<h3 class="entry-title">' + escapeHtml(project.name) + '</h3>' +
       '<p class="entry-subtitle"><em>' + escapeHtml(project.position) + '</em></p>' +
       responsibilitiesHtml +
