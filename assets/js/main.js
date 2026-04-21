@@ -91,21 +91,17 @@ function renderEducation(langData) {
 
   container.innerHTML = langData.education.map(function (entry) {
     const periodHtml = (entry.start || entry.end)
-      ? '<span class="entry-period">' + escapeHtml(entry.start || '') + ' - ' + escapeHtml(entry.end || '') + '</span>'
-      : (entry.year ? '<span class="entry-period">' + escapeHtml(entry.year) + '</span>' : '');
+      ? '<span class="sidebar-edu-period">' + escapeHtml(entry.start || '') + ' – ' + escapeHtml(entry.end || '') + '</span>'
+      : (entry.year ? '<span class="sidebar-edu-period">' + escapeHtml(entry.year) + '</span>' : '');
 
     const descHtml = entry.description
-      ? '<p class="entry-description">' + escapeHtml(entry.description) + '</p>'
+      ? '<span class="sidebar-edu-desc">' + escapeHtml(entry.description) + '</span>'
       : '';
 
-    return '<div class="cv-entry">' +
-      '<div class="entry-header">' +
-        '<div class="entry-header-left">' +
-          '<h3 class="entry-institution">' + escapeHtml(entry.institution) + '</h3>' +
-          '<p class="entry-degree">' + escapeHtml(entry.degree) + '</p>' +
-        '</div>' +
-        periodHtml +
-      '</div>' +
+    return '<div class="sidebar-education-entry">' +
+      '<strong class="sidebar-edu-institution">' + escapeHtml(entry.institution) + '</strong>' +
+      '<span class="sidebar-edu-degree">' + escapeHtml(entry.degree) + '</span>' +
+      periodHtml +
       descHtml +
       '</div>';
   }).join('');
@@ -120,9 +116,9 @@ function renderSkills(langData) {
   if (!container || !langData.skills) return;
 
   container.innerHTML = langData.skills.map(function (skill) {
-    return '<div class="skill-category">' +
-      '<h3 class="category-name">' + escapeHtml(skill.category) + '</h3>' +
-      '<p class="skill-description">' + escapeHtml(skill.description) + '</p>' +
+    return '<div class="sidebar-skill">' +
+      '<strong>' + escapeHtml(skill.category) + ':</strong>' +
+      '<span>' + escapeHtml(skill.description) + '</span>' +
       '</div>';
   }).join('');
 }
@@ -176,8 +172,10 @@ function renderProfile(langData) {
   const hobbiesContainer = document.getElementById('hobbies-list');
   if (hobbiesContainer && langData.profile.hobbies) {
     hobbiesContainer.innerHTML = langData.profile.hobbies.map(function (h) {
-      return '<li><span class="hobby-icon" aria-hidden="true">' + h.icon + '</span>' +
-        '<span>' + escapeHtml(h.name) + '</span></li>';
+      return '<li><div class="sidebar-hobby">' +
+        '<span class="hobby-icon" aria-hidden="true">' + h.icon + '</span>' +
+        '<span>' + escapeHtml(h.name) + '</span>' +
+        '</div></li>';
     }).join('');
   }
 }

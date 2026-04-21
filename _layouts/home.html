@@ -76,44 +76,46 @@ layout: default
     </div>
 
     <!-- Skills -->
-    {% if site.data.skills %}
+    {% assign lang = site.active_lang | default: "vi" %}
+    {% assign t = site.data.i18n[lang] %}
     <div class="sidebar-section">
       <h2 class="sidebar-section-title" data-i18n="nav.skills">
         <span class="sidebar-section-icon" aria-hidden="true">★</span>
         Kỹ Năng
       </h2>
-      {% for skill in site.data.skills %}
-      <div class="sidebar-skill">
-        <strong>{{ skill.category }}:</strong>
-        <span>{{ skill.description }}</span>
+      <div id="skills-list">
+        {% for skill in t.skills %}
+        <div class="sidebar-skill">
+          <strong>{{ skill.category }}:</strong>
+          <span>{{ skill.description }}</span>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
-    {% endif %}
 
     <!-- Education -->
-    {% if site.data.education %}
     <div class="sidebar-section">
       <h2 class="sidebar-section-title" data-i18n="nav.education">
         <span class="sidebar-section-icon" aria-hidden="true">🎓</span>
         Học Vấn
       </h2>
-      {% for entry in site.data.education %}
-      <div class="sidebar-education-entry">
-        <strong class="sidebar-edu-institution">{{ entry.institution }}</strong>
-        <span class="sidebar-edu-degree">{{ entry.degree }}</span>
-        {% if entry.start or entry.end %}
-        <span class="sidebar-edu-period">{{ entry.start }} – {{ entry.end }}</span>
-        {% elsif entry.year %}
-        <span class="sidebar-edu-period">{{ entry.year }}</span>
-        {% endif %}
-        {% if entry.description %}
-        <span class="sidebar-edu-desc">{{ entry.description }}</span>
-        {% endif %}
+      <div id="education-list">
+        {% for entry in t.education %}
+        <div class="sidebar-education-entry">
+          <strong class="sidebar-edu-institution">{{ entry.institution }}</strong>
+          <span class="sidebar-edu-degree">{{ entry.degree }}</span>
+          {% if entry.start or entry.end %}
+          <span class="sidebar-edu-period">{{ entry.start }} – {{ entry.end }}</span>
+          {% elsif entry.year %}
+          <span class="sidebar-edu-period">{{ entry.year }}</span>
+          {% endif %}
+          {% if entry.description %}
+          <span class="sidebar-edu-desc">{{ entry.description }}</span>
+          {% endif %}
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
-    {% endif %}
 
     <!-- References (hidden) -->
     {% comment %}
@@ -135,20 +137,22 @@ layout: default
     {% endcomment %}
 
     <!-- Hobbies -->
-    {% if site.data.profile.hobbies %}
     <div class="sidebar-section">
-      <h2 class="sidebar-section-title">
+      <h2 class="sidebar-section-title" data-i18n="sections.hobbies_title">
         <span class="sidebar-section-icon" aria-hidden="true">♥</span>
         Sở Thích
       </h2>
-      {% for hobby in site.data.profile.hobbies %}
-      <div class="sidebar-hobby">
-        <span class="hobby-icon" aria-hidden="true">{{ hobby.icon }}</span>
-        <span>{{ hobby.name }}</span>
-      </div>
-      {% endfor %}
+      <ul id="hobbies-list" style="list-style:none;padding:0;margin:0;">
+        {% for hobby in t.profile.hobbies %}
+        <li>
+          <div class="sidebar-hobby">
+            <span class="hobby-icon" aria-hidden="true">{{ hobby.icon }}</span>
+            <span>{{ hobby.name }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
-    {% endif %}
 
     <!-- Other info -->
     {% if site.data.profile.other_info %}
@@ -169,9 +173,9 @@ layout: default
     <!-- Profile header -->
     <div class="main-profile-header">
       <h1 class="main-name">{{ site.data.profile.name }}</h1>
-      <p class="main-title">{{ site.data.profile.title }}</p>
+      <p id="profile-title" class="main-title">{{ t.profile.title | default: site.data.profile.title }}</p>
       {% if site.data.profile.summary %}
-      <p class="main-summary">{{ site.data.profile.summary }}</p>
+      <p id="profile-summary" class="main-summary">{{ t.profile.summary | default: site.data.profile.summary }}</p>
       {% endif %}
     </div>
 
