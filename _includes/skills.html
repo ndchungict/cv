@@ -1,12 +1,15 @@
-<section id="skills" class="cv-section">
-  <h2 data-i18n="nav.skills">Kỹ năng</h2>
+<section id="skills" class="main-section">
+  <h2 class="main-section-title" data-i18n="sections.skills_title">
+    <span class="section-icon" aria-hidden="true">🛠️</span>
+    Kỹ Năng
+  </h2>
 
-  {% for category in site.data.skills %}
-  <div class="skill-category">
-    <h3 class="category-name">{{ category.category }}</h3>
-    <ul>
-      {% for item in category.items %}<li>{{ item }}</li>{% endfor %}
-    </ul>
+  <div id="skills-list">
+    {% for skill in site.data.skills %}
+    <div class="skill-category">
+      <h3 class="category-name">{{ skill.category }}</h3>
+      <p class="skill-description">{{ skill.description }}</p>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </section>

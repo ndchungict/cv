@@ -39,9 +39,148 @@ function getI18nValue(langData, key) {
   return typeof value === 'string' ? value : null;
 }
 
+// ---------------------------------------------------------------------------
+// Dynamic content renderers
+// ---------------------------------------------------------------------------
+
+/**
+ * Renders the experience section from i18n data.
+ * @param {object} langData - The i18n data object for a specific language.
+ */
+function renderExperience(langData) {
+  const container = document.getElementById('experience-list');
+  if (!container || !langData.experience) return;
+
+  const achievementsLabel = (langData.sections && langData.sections.achievements_label) || 'Achievements:';
+
+  container.innerHTML = langData.experience.map(function (entry) {
+    const responsibilitiesHtml = entry.responsibilities
+      ? '<ul class="entry-list">' +
+        entry.responsibilities.map(function (r) { return '<li>' + escapeHtml(r) + '</li>'; }).join('') +
+        '</ul>'
+      : '';
+
+    const achievementsHtml = entry.achievements
+      ? '<p class="entry-achievements-label">' + escapeHtml(achievementsLabel) + '</p>' +
+        '<ul class="entry-list">' +
+        entry.achievements.map(function (a) { return '<li>' + escapeHtml(a) + '</li>'; }).join('') +
+        '</ul>'
+      : '';
+
+    return '<div class="cv-entry">' +
+      '<div class="entry-header">' +
+        '<div class="entry-header-left">' +
+          '<h3 class="entry-company">' + escapeHtml(entry.company) + '</h3>' +
+          '<p class="entry-title-role"><em>' + escapeHtml(entry.title) + '</em></p>' +
+        '</div>' +
+        '<span class="entry-period">' + escapeHtml(entry.start) + ' - ' + escapeHtml(entry.end) + '</span>' +
+      '</div>' +
+      responsibilitiesHtml +
+      achievementsHtml +
+      '</div>';
+  }).join('');
+}
+
+/**
+ * Renders the education section from i18n data.
+ * @param {object} langData - The i18n data object for a specific language.
+ */
+function renderEducation(langData) {
+  const container = document.getElementById('education-list');
+  if (!container || !langData.education) return;
+
+  container.innerHTML = langData.education.map(function (entry) {
+    const periodHtml = (entry.start || entry.end)
+      ? '<span class="entry-period">' + escapeHtml(entry.start || '') + ' - ' + escapeHtml(entry.end || '') + '</span>'
+      : (entry.year ? '<span class="entry-period">' + escapeHtml(entry.year) + '</span>' : '');
+
+    const descHtml = entry.description
+      ? '<p class="entry-description">' + escapeHtml(entry.description) + '</p>'
+      : '';
+
+    return '<div class="cv-entry">' +
+      '<div class="entry-header">' +
+        '<div class="entry-header-left">' +
+          '<h3 class="entry-institution">' + escapeHtml(entry.institution) + '</h3>' +
+          '<p class="entry-degree">' + escapeHtml(entry.degree) + '</p>' +
+        '</div>' +
+        periodHtml +
+      '</div>' +
+      descHtml +
+      '</div>';
+  }).join('');
+}
+
+/**
+ * Renders the skills section from i18n data.
+ * @param {object} langData - The i18n data object for a specific language.
+ */
+function renderSkills(langData) {
+  const container = document.getElementById('skills-list');
+  if (!container || !langData.skills) return;
+
+  container.innerHTML = langData.skills.map(function (skill) {
+    return '<div class="skill-category">' +
+      '<h3 class="category-name">' + escapeHtml(skill.category) + '</h3>' +
+      '<p class="skill-description">' + escapeHtml(skill.description) + '</p>' +
+      '</div>';
+  }).join('');
+}
+
+/**
+ * Renders the profile summary, title, address, and hobbies from i18n data.
+ * @param {object} langData - The i18n data object for a specific language.
+ */
+function renderProfile(langData) {
+  if (!langData.profile) return;
+
+  const titleEl = document.getElementById('profile-title');
+  if (titleEl && langData.profile.title) {
+    titleEl.textContent = langData.profile.title;
+  }
+
+  const summaryEl = document.getElementById('profile-summary');
+  if (summaryEl && langData.profile.summary) {
+    summaryEl.textContent = langData.profile.summary;
+  }
+
+  const addressEl = document.getElementById('profile-address');
+  if (addressEl && langData.profile.address) {
+    addressEl.textContent = langData.profile.address;
+  }
+
+  const hobbiesContainer = document.getElementById('hobbies-list');
+  if (hobbiesContainer && langData.profile.hobbies) {
+    hobbiesContainer.innerHTML = langData.profile.hobbies.map(function (h) {
+      return '<li><span class="hobby-icon" aria-hidden="true">' + h.icon + '</span>' +
+        '<span>' + escapeHtml(h.name) + '</span></li>';
+    }).join('');
+  }
+}
+
+/**
+ * Escapes HTML special characters to prevent XSS.
+ * @param {string} str
+ * @returns {string}
+ */
+function escapeHtml(str) {
+  if (typeof str !== 'string') return String(str || '');
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// ---------------------------------------------------------------------------
+// Core language application
+// ---------------------------------------------------------------------------
+
 /**
  * Applies the given language to the page:
  * - Updates text content of all [data-i18n] elements.
+ * - Re-renders dynamic content sections (experience, education, skills, profile).
  * - Persists the selection to localStorage.
  * - Updates the active state on language switcher buttons.
  *
@@ -60,6 +199,12 @@ function applyLanguage(lang) {
       el.textContent = value;
     }
   });
+
+  // Re-render dynamic content sections
+  renderProfile(langData);
+  renderExperience(langData);
+  renderEducation(langData);
+  renderSkills(langData);
 
   // Persist preference
   try {

@@ -5,13 +5,26 @@
       <img src="{{ site.data.profile.photo }}" alt="{{ site.data.profile.name }}" class="profile-photo">
       <div class="profile-info">
         <h2>{{ site.data.profile.name }}</h2>
-        <p class="profile-title">{{ site.data.profile.title }}</p>
-        <p class="profile-summary">{{ site.data.profile.summary }}</p>
+        <p id="profile-title" class="profile-title">{{ site.data.profile.title }}</p>
+        <p id="profile-summary" class="profile-summary">{{ site.data.profile.summary }}</p>
         <div class="profile-links">
           {% if site.data.profile.email %}<a href="mailto:{{ site.data.profile.email }}">{{ site.data.profile.email }}</a>{% endif %}
+          {% if site.data.profile.phone %}<span class="profile-phone">{{ site.data.profile.phone }}</span>{% endif %}
+          {% if site.data.profile.dob %}<span class="profile-dob">{{ site.data.profile.dob }}</span>{% endif %}
+          {% if site.data.profile.address %}<span id="profile-address" class="profile-address">{{ site.data.profile.address }}</span>{% endif %}
           {% if site.data.profile.linkedin %}<a href="{{ site.data.profile.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
-          {% if site.data.profile.github %}<a href="{{ site.data.profile.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+          {% if site.data.profile.github %}<a href="https://{{ site.data.profile.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
         </div>
+        {% if site.data.profile.hobbies %}
+        <div class="profile-hobbies">
+          <h3 data-i18n="sections.hobbies_title">Sở thích</h3>
+          <ul id="hobbies-list">
+            {% for hobby in site.data.profile.hobbies %}
+            <li><span class="hobby-icon" aria-hidden="true">{{ hobby.icon }}</span><span>{{ hobby.name }}</span></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
       </div>
     </div>
   {% endif %}

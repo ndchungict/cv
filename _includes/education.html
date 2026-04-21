@@ -1,25 +1,27 @@
 <section id="education" class="main-section">
-  <h2 class="main-section-title" data-i18n="nav.education">
+  <h2 class="main-section-title" data-i18n="sections.education_title">
     <span class="section-icon" aria-hidden="true">🎓</span>
     Học Vấn
   </h2>
 
-  {% for entry in site.data.education %}
-  <div class="cv-entry">
-    <div class="entry-header">
-      <div class="entry-header-left">
-        <h3 class="entry-institution">{{ entry.institution }}</h3>
-        <p class="entry-degree">{{ entry.degree }}</p>
+  <div id="education-list">
+    {% for entry in site.data.education %}
+    <div class="cv-entry">
+      <div class="entry-header">
+        <div class="entry-header-left">
+          <h3 class="entry-institution">{{ entry.institution }}</h3>
+          <p class="entry-degree">{{ entry.degree }}</p>
+        </div>
+        {% if entry.start or entry.end %}
+        <span class="entry-period">{{ entry.start }} - {{ entry.end }}</span>
+        {% elsif entry.year %}
+        <span class="entry-period">{{ entry.year }}</span>
+        {% endif %}
       </div>
-      {% if entry.start or entry.end %}
-      <span class="entry-period">{{ entry.start }} - {{ entry.end }}</span>
-      {% elsif entry.year %}
-      <span class="entry-period">{{ entry.year }}</span>
+      {% if entry.description %}
+      <p class="entry-description">{{ entry.description }}</p>
       {% endif %}
     </div>
-    {% if entry.description %}
-    <p class="entry-description">{{ entry.description }}</p>
-    {% endif %}
+    {% endfor %}
   </div>
-  {% endfor %}
 </section>
