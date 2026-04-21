@@ -1,1 +1,49 @@
-# Không có dự án nổi bật cần hiển thị
+- name: TPB Core Banking
+  period: "09/2024 - 2025"
+  position: Automation Tester
+  responsibilities:
+    - Defining and building test framework
+    - Working with other team member to implement the plan
+    - Developing automation scripts, run and report result
+    - Integration testing during system upgrade
+
+- name: MB Digital Banking For Personal Customers
+  period: "05/2020 - 09/2023"
+  position: Automation Tester
+  responsibilities:
+    - Defining and building test framework using Appium + Serenity BDD
+    - Learning about the system and writing test cases
+    - Working with other team member to implement the plan
+    - Writing feature files following test cases
+    - Develop automation scripts, run and report result
+    - Training and mentoring new team members
+    - Integrate with Jenkins
+    - Integration testing during system upgrade
+
+- name: MB Digital Banking For Business Customers
+  period: "02/2020 - 05/2020"
+  position: Automation Tester
+  responsibilities:
+    - Defining and building test framework using Appium + Serenity BDD
+    - Writing feature files following requirement
+    - Develop automation scripts
+    - Run scripts and report result
+
+- name: MC BPM (Loan management)
+  period: "06/2019 - 02/2020"
+  position: Tester
+  responsibilities:
+    - Learning about the business system and writing test cases
+    - Execute and maintain automation test using Cucumber, Selenium
+    - Automation test services using Postman
+    - Writing test reports and user manual
+
+- name: ZeroBank application (Android)
+  period: "01/2019 - 05/2019"
+  position: Tester
+  responsibilities:
+    - Learning about the business system and writing test cases
+    - Training the business for teammates
+    - Testing the whole system
+    - Writing test reports and user manual
+    - Execute automation test with Cucumber and Appium

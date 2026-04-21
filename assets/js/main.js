@@ -128,6 +128,30 @@ function renderSkills(langData) {
 }
 
 /**
+ * Renders the projects section from i18n data.
+ * @param {object} langData - The i18n data object for a specific language.
+ */
+function renderProjects(langData) {
+  const container = document.getElementById('projects-list');
+  if (!container || !langData.projects) return;
+
+  container.innerHTML = langData.projects.map(function (project) {
+    const responsibilitiesHtml = project.responsibilities
+      ? '<ul class="entry-list">' +
+        project.responsibilities.map(function (r) { return '<li>' + escapeHtml(r) + '</li>'; }).join('') +
+        '</ul>'
+      : '';
+
+    return '<div class="cv-entry">' +
+      '<span class="entry-period">' + escapeHtml(project.period) + '</span>' +
+      '<h3 class="entry-title">' + escapeHtml(project.name) + '</h3>' +
+      '<p class="entry-subtitle"><em>' + escapeHtml(project.position) + '</em></p>' +
+      responsibilitiesHtml +
+      '</div>';
+  }).join('');
+}
+
+/**
  * Renders the profile summary, title, address, and hobbies from i18n data.
  * @param {object} langData - The i18n data object for a specific language.
  */
@@ -205,6 +229,7 @@ function applyLanguage(lang) {
   renderExperience(langData);
   renderEducation(langData);
   renderSkills(langData);
+  renderProjects(langData);
 
   // Persist preference
   try {

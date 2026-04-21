@@ -1,17 +1,25 @@
 <section id="projects" class="cv-section">
-  <h2 data-i18n="nav.projects">Dự án</h2>
+  <h2 class="main-section-title" data-i18n="sections.projects_title">
+    <span class="section-icon" aria-hidden="true">🗂️</span>
+    Dự Án
+  </h2>
 
-  {% for project in site.data.projects %}
-  <div class="cv-entry">
-    <h3 class="entry-title">{{ project.name }}</h3>
-    <p class="entry-description">{{ project.description }}</p>
-    <ul class="tech-list">
-      {% for tech in project.technologies %}<li>{{ tech }}</li>{% endfor %}
-    </ul>
-    <div class="project-links">
-      {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener">Live Demo</a>{% endif %}
-      {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+  <div id="projects-list">
+    {% assign lang = site.active_lang | default: "vi" %}
+    {% assign t = site.data.i18n[lang] %}
+    {% for project in t.projects %}
+    <div class="cv-entry">
+      <span class="entry-period">{{ project.period }}</span>
+      <h3 class="entry-title">{{ project.name }}</h3>
+      <p class="entry-subtitle"><em>{{ project.position }}</em></p>
+      {% if project.responsibilities %}
+      <ul class="entry-list">
+        {% for item in project.responsibilities %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </section>
