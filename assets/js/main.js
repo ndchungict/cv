@@ -154,6 +154,11 @@ function renderProjects(langData) {
 function renderProfile(langData) {
   if (!langData.profile) return;
 
+  const nameEl = document.getElementById('profile-name');
+  if (nameEl && langData.profile.name) {
+    nameEl.textContent = langData.profile.name;
+  }
+
   const titleEl = document.getElementById('profile-title');
   if (titleEl && langData.profile.title) {
     titleEl.textContent = langData.profile.title;

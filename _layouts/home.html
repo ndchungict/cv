@@ -172,7 +172,7 @@ layout: default
 
     <!-- Profile header -->
     <div class="main-profile-header">
-      <h1 class="main-name">{{ site.data.profile.name }}</h1>
+      <h1 id="profile-name" class="main-name">{{ site.data.profile.name }}</h1>
       <p id="profile-title" class="main-title">{{ t.profile.title | default: site.data.profile.title }}</p>
       {% if site.data.profile.summary %}
       <p id="profile-summary" class="main-summary">{{ t.profile.summary | default: site.data.profile.summary }}</p>
