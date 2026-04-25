@@ -289,7 +289,8 @@ li {
 
 .contact-item a {
   color: var(--color-text);
-  word-break: break-all;
+  /* Keep links on a single line — no wrapping, no truncation */
+  white-space: nowrap;
 }
 
 .contact-item a:hover {
@@ -851,14 +852,14 @@ li {
   }
 
   .cv-sidebar {
-    flex: 10;
+    flex: 11;
     min-width: 0;
     border-right: 1pt solid #cccccc;
     padding: 0 0 12pt;
   }
 
   .cv-main {
-    flex: 17;
+    flex: 16;
     padding: 8pt 12pt 12pt;
   }
 
@@ -891,16 +892,9 @@ li {
     break-inside: avoid;
   }
 
-  /* Expand hyperlinks */
+  /* Do NOT expand hyperlinks — contact links must stay on one line */
   a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    color: #555555;
-  }
-
-  a[href^="#"]::after,
-  a[href^="mailto:"]::after {
-    content: "";
+    content: none !important;
   }
 
   .sidebar-photo-wrap {
