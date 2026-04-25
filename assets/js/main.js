@@ -92,46 +92,87 @@ function renderExperience(lang) {
 
 /**
  * Renders the education section from the education data file.
+ * Targets both sidebar (#sidebar-education-list) and main (#education-list).
  * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
 function renderEducation(lang) {
-  const container = document.getElementById('education-list');
   const entries = EDUCATION_DATA[lang];
-  if (!container || !entries) return;
+  if (!entries) return;
 
-  container.innerHTML = entries.map(function (entry) {
-    const periodHtml = (entry.start || entry.end)
-      ? '<span class="sidebar-edu-period">' + escapeHtml(entry.start || '') + ' – ' + escapeHtml(entry.end || '') + '</span>'
-      : (entry.year ? '<span class="sidebar-edu-period">' + escapeHtml(entry.year) + '</span>' : '');
+  // Sidebar education list
+  const sidebarContainer = document.getElementById('sidebar-education-list');
+  if (sidebarContainer) {
+    sidebarContainer.innerHTML = entries.map(function (entry) {
+      const periodHtml = (entry.start || entry.end)
+        ? '<span class="sidebar-edu-period">' + escapeHtml(entry.start || '') + ' – ' + escapeHtml(entry.end || '') + '</span>'
+        : (entry.year ? '<span class="sidebar-edu-period">' + escapeHtml(entry.year) + '</span>' : '');
 
-    const descHtml = entry.description
-      ? '<span class="sidebar-edu-desc">' + escapeHtml(entry.description) + '</span>'
-      : '';
+      const descHtml = entry.description
+        ? '<span class="sidebar-edu-desc">' + escapeHtml(entry.description) + '</span>'
+        : '';
 
-    return '<div class="sidebar-education-entry">' +
-      '<strong class="sidebar-edu-institution">' + escapeHtml(entry.institution) + '</strong>' +
-      '<span class="sidebar-edu-degree">' + escapeHtml(entry.degree) + '</span>' +
-      periodHtml +
-      descHtml +
-      '</div>';
-  }).join('');
+      return '<div class="sidebar-education-entry">' +
+        '<strong class="sidebar-edu-institution">' + escapeHtml(entry.institution) + '</strong>' +
+        '<span class="sidebar-edu-degree">' + escapeHtml(entry.degree) + '</span>' +
+        periodHtml +
+        descHtml +
+        '</div>';
+    }).join('');
+  }
+
+  // Main education list (if present)
+  const mainContainer = document.getElementById('education-list');
+  if (mainContainer) {
+    mainContainer.innerHTML = entries.map(function (entry) {
+      const periodHtml = (entry.start || entry.end)
+        ? '<span class="entry-period">' + escapeHtml(entry.start || '') + ' – ' + escapeHtml(entry.end || '') + '</span>'
+        : (entry.year ? '<span class="entry-period">' + escapeHtml(entry.year) + '</span>' : '');
+
+      const descHtml = entry.description
+        ? '<p class="entry-description">' + escapeHtml(entry.description) + '</p>'
+        : '';
+
+      return '<div class="cv-entry">' +
+        '<div class="entry-header">' +
+          '<div class="entry-header-left">' +
+            '<h3 class="entry-institution">' + escapeHtml(entry.institution) + '</h3>' +
+            '<p class="entry-degree">' + escapeHtml(entry.degree) + '</p>' +
+          '</div>' +
+          periodHtml +
+        '</div>' +
+        descHtml +
+        '</div>';
+    }).join('');
+  }
 }
 
 /**
  * Renders the skills section from the skills data file.
+ * Targets both sidebar (#sidebar-skills-list) and main (#skills-list).
  * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
 function renderSkills(lang) {
-  const container = document.getElementById('skills-list');
   const skills = SKILLS_DATA[lang];
-  if (!container || !skills) return;
+  if (!skills) return;
 
-  container.innerHTML = skills.map(function (skill) {
+  const skillHtml = skills.map(function (skill) {
     return '<div class="sidebar-skill">' +
       '<strong>' + escapeHtml(skill.category) + ':</strong>' +
       '<span>' + escapeHtml(skill.description) + '</span>' +
       '</div>';
   }).join('');
+
+  // Sidebar skills list
+  const sidebarContainer = document.getElementById('sidebar-skills-list');
+  if (sidebarContainer) {
+    sidebarContainer.innerHTML = skillHtml;
+  }
+
+  // Main skills list (if present)
+  const mainContainer = document.getElementById('skills-list');
+  if (mainContainer) {
+    mainContainer.innerHTML = skillHtml;
+  }
 }
 
 /**
@@ -150,7 +191,9 @@ function renderProjects(lang) {
         '</ul>'
       : '';
 
-    return '<div class="cv-entry">' +
+    const extraClass = project.pdf_exclude ? ' pdf-exclude' : '';
+
+    return '<div class="cv-entry' + extraClass + '">' +
       '<h3 class="entry-title">' + escapeHtml(project.name) + '</h3>' +
       '<p class="entry-subtitle"><em>' + escapeHtml(project.position) + '</em></p>' +
       responsibilitiesHtml +
@@ -265,6 +308,9 @@ function applyLanguage(lang) {
       btn.setAttribute('aria-pressed', 'false');
     }
   });
+
+  // Toggle Chinese font class on body for CJK rendering
+  document.body.classList.toggle('lang-zh', lang === 'zh');
 }
 
 /**
@@ -373,6 +419,7 @@ async function exportPDF() {
     '.cv-actions',
     '.btn-print',
     '.btn-export',
+    '.pdf-exclude',
   ];
   var hiddenEls = [];
 

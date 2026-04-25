@@ -25,6 +25,7 @@ vi:
       - "Chạy kiểm thử, phân tích kết quả và báo cáo lỗi chi tiết cho team phát triển."
 
   - name: "MC BPM (Quản lý khoản vay)"
+    pdf_exclude: true
     position: "Tester"
     responsibilities:
       - "Phân tích tài liệu nghiệp vụ hệ thống quản lý khoản vay, xây dựng bộ test case bao phủ các luồng xử lý hồ sơ vay."
@@ -33,6 +34,7 @@ vi:
       - "Lập báo cáo kiểm thử và viết tài liệu hướng dẫn sử dụng cho người dùng cuối."
 
   - name: "ZeroBank Application (Android)"
+    pdf_exclude: true
     position: "Tester"
     responsibilities:
       - "Nghiên cứu nghiệp vụ ngân hàng số, xây dựng bộ test case toàn diện cho ứng dụng Android."
@@ -67,6 +69,7 @@ en:
       - "Executed tests, analyzed results, and reported detailed defects to the development team."
 
   - name: "MC BPM (Loan Management)"
+    pdf_exclude: true
     position: "Tester"
     responsibilities:
       - "Analyzed business documents for the loan management system and built a test case suite covering all major loan processing flows."
@@ -75,6 +78,7 @@ en:
       - "Produced test reports and wrote end-user documentation for the system."
 
   - name: "ZeroBank Application (Android)"
+    pdf_exclude: true
     position: "Tester"
     responsibilities:
       - "Studied digital banking business logic and built a comprehensive test case suite for the Android application."
@@ -109,6 +113,7 @@ zh:
       - "执行测试、分析结果，并向开发团队提交详细的缺陷报告。"
 
   - name: "MC BPM（贷款管理）"
+    pdf_exclude: true
     position: "测试工程师"
     responsibilities:
       - "分析贷款管理系统的业务文档，构建覆盖所有主要贷款处理流程的测试用例集。"
@@ -117,6 +122,7 @@ zh:
       - "输出测试报告并编写系统最终用户文档。"
 
   - name: "ZeroBank应用（Android）"
+    pdf_exclude: true
     position: "测试工程师"
     responsibilities:
       - "深入学习数字银行业务逻辑，为Android应用构建全面的测试用例集。"

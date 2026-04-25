@@ -781,6 +781,39 @@ li {
     gap: var(--space-sm);
   }
 }/* =============================================================================
+   CHINESE LANGUAGE — Official document fonts (宋体/黑体 style via Google Fonts)
+   Applied when lang="zh" is set on <html> or <body>
+   ============================================================================= */
+
+:lang(zh) body,
+[lang="zh"] body,
+.lang-zh body,
+.lang-zh {
+  /* Noto Serif SC ≈ 宋体 (Song Ti) — standard for Chinese official documents */
+  font-family: "Noto Serif SC", "SimSun", "STSong", serif;
+}
+
+/* Headings use 黑体 (Hei Ti) style — Noto Sans SC */
+.lang-zh .main-name,
+.lang-zh .main-title,
+.lang-zh .main-section-title,
+.lang-zh .sidebar-section-title,
+.lang-zh .entry-company,
+.lang-zh .entry-institution,
+.lang-zh .sidebar-edu-institution {
+  font-family: "Noto Sans SC", "SimHei", "STHeiti", sans-serif;
+}
+
+/* Slightly larger line-height for CJK readability */
+.lang-zh .entry-list li,
+.lang-zh .main-summary,
+.lang-zh .sidebar-skill,
+.lang-zh .sidebar-education-entry,
+.lang-zh .contact-item {
+  line-height: 1.75;
+}
+
+/* =============================================================================
    PRINT STYLESHEET
    ============================================================================= */
 
