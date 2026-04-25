@@ -2,8 +2,15 @@
 ---
 // Jekyll processes this file so Liquid tags are evaluated at build time.
 
-// i18n data injected from _data/i18n.yml via Liquid
+// i18n UI strings from _data/i18n.yml
 const I18N_DATA = {{ site.data.i18n | jsonify }};
+
+// Content data from individual data files (multi-language)
+const PROFILE_DATA = {{ site.data.profile | jsonify }};
+const EXPERIENCE_DATA = {{ site.data.experience | jsonify }};
+const EDUCATION_DATA = {{ site.data.education | jsonify }};
+const SKILLS_DATA = {{ site.data.skills | jsonify }};
+const PROJECTS_DATA = {{ site.data.projects | jsonify }};
 
 const DEFAULT_LANG = 'vi';
 const STORAGE_KEY = 'cv_lang';
@@ -44,16 +51,18 @@ function getI18nValue(langData, key) {
 // ---------------------------------------------------------------------------
 
 /**
- * Renders the experience section from i18n data.
- * @param {object} langData - The i18n data object for a specific language.
+ * Renders the experience section from the experience data file.
+ * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
-function renderExperience(langData) {
+function renderExperience(lang) {
   const container = document.getElementById('experience-list');
-  if (!container || !langData.experience) return;
+  const entries = EXPERIENCE_DATA[lang];
+  if (!container || !entries) return;
 
+  const langData = I18N_DATA[lang] || {};
   const achievementsLabel = (langData.sections && langData.sections.achievements_label) || 'Achievements:';
 
-  container.innerHTML = langData.experience.map(function (entry) {
+  container.innerHTML = entries.map(function (entry) {
     const responsibilitiesHtml = entry.responsibilities
       ? '<ul class="entry-list">' +
         entry.responsibilities.map(function (r) { return '<li>' + escapeHtml(r) + '</li>'; }).join('') +
@@ -82,14 +91,15 @@ function renderExperience(langData) {
 }
 
 /**
- * Renders the education section from i18n data.
- * @param {object} langData - The i18n data object for a specific language.
+ * Renders the education section from the education data file.
+ * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
-function renderEducation(langData) {
+function renderEducation(lang) {
   const container = document.getElementById('education-list');
-  if (!container || !langData.education) return;
+  const entries = EDUCATION_DATA[lang];
+  if (!container || !entries) return;
 
-  container.innerHTML = langData.education.map(function (entry) {
+  container.innerHTML = entries.map(function (entry) {
     const periodHtml = (entry.start || entry.end)
       ? '<span class="sidebar-edu-period">' + escapeHtml(entry.start || '') + ' – ' + escapeHtml(entry.end || '') + '</span>'
       : (entry.year ? '<span class="sidebar-edu-period">' + escapeHtml(entry.year) + '</span>' : '');
@@ -108,14 +118,15 @@ function renderEducation(langData) {
 }
 
 /**
- * Renders the skills section from i18n data.
- * @param {object} langData - The i18n data object for a specific language.
+ * Renders the skills section from the skills data file.
+ * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
-function renderSkills(langData) {
+function renderSkills(lang) {
   const container = document.getElementById('skills-list');
-  if (!container || !langData.skills) return;
+  const skills = SKILLS_DATA[lang];
+  if (!container || !skills) return;
 
-  container.innerHTML = langData.skills.map(function (skill) {
+  container.innerHTML = skills.map(function (skill) {
     return '<div class="sidebar-skill">' +
       '<strong>' + escapeHtml(skill.category) + ':</strong>' +
       '<span>' + escapeHtml(skill.description) + '</span>' +
@@ -124,14 +135,15 @@ function renderSkills(langData) {
 }
 
 /**
- * Renders the projects section from i18n data.
- * @param {object} langData - The i18n data object for a specific language.
+ * Renders the projects section from the projects data file.
+ * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
-function renderProjects(langData) {
+function renderProjects(lang) {
   const container = document.getElementById('projects-list');
-  if (!container || !langData.projects) return;
+  const projects = PROJECTS_DATA[lang];
+  if (!container || !projects) return;
 
-  container.innerHTML = langData.projects.map(function (project) {
+  container.innerHTML = projects.map(function (project) {
     const responsibilitiesHtml = project.responsibilities
       ? '<ul class="entry-list">' +
         project.responsibilities.map(function (r) { return '<li>' + escapeHtml(r) + '</li>'; }).join('') +
@@ -147,35 +159,36 @@ function renderProjects(langData) {
 }
 
 /**
- * Renders the profile summary, title, address, and hobbies from i18n data.
- * @param {object} langData - The i18n data object for a specific language.
+ * Renders the profile summary, title, address, and hobbies from the profile data file.
+ * @param {string} lang - Language code: 'vi', 'en', or 'zh'.
  */
-function renderProfile(langData) {
-  if (!langData.profile) return;
+function renderProfile(lang) {
+  const profile = PROFILE_DATA[lang];
+  if (!profile) return;
 
   const nameEl = document.getElementById('profile-name');
-  if (nameEl && langData.profile.name) {
-    nameEl.textContent = langData.profile.name;
+  if (nameEl && profile.name) {
+    nameEl.textContent = profile.name;
   }
 
   const titleEl = document.getElementById('profile-title');
-  if (titleEl && langData.profile.title) {
-    titleEl.textContent = langData.profile.title;
+  if (titleEl && profile.title) {
+    titleEl.textContent = profile.title;
   }
 
   const summaryEl = document.getElementById('profile-summary');
-  if (summaryEl && langData.profile.summary) {
-    summaryEl.textContent = langData.profile.summary;
+  if (summaryEl && profile.summary) {
+    summaryEl.textContent = profile.summary;
   }
 
   const addressEl = document.getElementById('profile-address');
-  if (addressEl && langData.profile.address) {
-    addressEl.textContent = langData.profile.address;
+  if (addressEl && profile.address) {
+    addressEl.textContent = profile.address;
   }
 
   const hobbiesContainer = document.getElementById('hobbies-list');
-  if (hobbiesContainer && langData.profile.hobbies) {
-    hobbiesContainer.innerHTML = langData.profile.hobbies.map(function (h) {
+  if (hobbiesContainer && profile.hobbies) {
+    hobbiesContainer.innerHTML = profile.hobbies.map(function (h) {
       return '<li><div class="sidebar-hobby">' +
         '<span class="hobby-icon" aria-hidden="true">' + h.icon + '</span>' +
         '<span>' + escapeHtml(h.name) + '</span>' +
@@ -227,11 +240,11 @@ function applyLanguage(lang) {
   });
 
   // Re-render dynamic content sections
-  renderProfile(langData);
-  renderExperience(langData);
-  renderEducation(langData);
-  renderSkills(langData);
-  renderProjects(langData);
+  renderProfile(lang);
+  renderExperience(lang);
+  renderEducation(lang);
+  renderSkills(lang);
+  renderProjects(lang);
 
   // Persist preference
   try {
@@ -279,12 +292,12 @@ function initLanguage() {
  * @returns {string} e.g. "2026-04-21-Nguyen-Duc-Chung-VI.pdf"
  */
 function getExportFilename(name, date, lang) {
-  // Prefer the pre-defined Latin name from i18n data (handles CJK scripts)
+  // Prefer the pre-defined Latin name from profile data (handles CJK scripts)
   var latinName = null;
   try {
-    var langData = I18N_DATA[lang];
-    if (langData && langData.profile && langData.profile.name_latin) {
-      latinName = langData.profile.name_latin;
+    var profileLang = PROFILE_DATA[lang];
+    if (profileLang && profileLang.name_latin) {
+      latinName = profileLang.name_latin;
     }
   } catch (e) { /* ignore */ }
 

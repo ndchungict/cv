@@ -1,49 +1,125 @@
-- name: TPB Core Banking
-  period: "09/2024 - 2025"
-  position: Automation Tester
-  responsibilities:
-    - Defining and building test framework
-    - Working with other team member to implement the plan
-    - Developing automation scripts, run and report result
-    - Integration testing during system upgrade
+vi:
+  - name: "TPB Core Banking"
+    position: "Automation Tester"
+    responsibilities:
+      - "Xây dựng framework kiểm thử tự động từ đầu cho hệ thống Core Banking, đảm bảo độ bao phủ các nghiệp vụ quan trọng."
+      - "Phát triển automation scripts kiểm thử các luồng giao dịch tài chính cốt lõi, phát hiện sớm lỗi hồi quy trong quá trình nâng cấp hệ thống."
+      - "Thực hiện kiểm thử tích hợp (integration testing) giữa các module trong các đợt nâng cấp hệ thống lớn."
+      - "Phối hợp chặt chẽ với team dev và BA để phân tích yêu cầu, lập kế hoạch kiểm thử và báo cáo kết quả định kỳ."
 
-- name: MB Digital Banking For Personal Customers
-  period: "05/2020 - 09/2023"
-  position: Automation Tester
-  responsibilities:
-    - Defining and building test framework using Appium + Serenity BDD
-    - Learning about the system and writing test cases
-    - Working with other team member to implement the plan
-    - Writing feature files following test cases
-    - Develop automation scripts, run and report result
-    - Training and mentoring new team members
-    - Integrate with Jenkins
-    - Integration testing during system upgrade
+  - name: "MB Digital Banking For Personal Customers"
+    position: "Automation Tester"
+    responsibilities:
+      - "Xây dựng framework kiểm thử tự động cho ứng dụng mobile banking cá nhân sử dụng Appium + Serenity BDD (BDD approach)."
+      - "Viết feature files (Gherkin) theo test case, phát triển step definitions và automation scripts cho các luồng nghiệp vụ chính."
+      - "Tích hợp bộ test tự động vào pipeline CI/CD với Jenkins, đảm bảo kiểm thử tự động chạy sau mỗi lần build."
+      - "Thực hiện kiểm thử hồi quy và kiểm thử tích hợp trong các đợt nâng cấp hệ thống, giảm thiểu rủi ro phát sinh lỗi trên production."
+      - "Kiểm thử trực tiếp trên môi trường live (production) sau mỗi lần triển khai, xác nhận hệ thống hoạt động ổn định và đúng nghiệp vụ."
+      - "Đào tạo và hướng dẫn các thành viên mới về quy trình kiểm thử, cách viết test case và sử dụng framework."
 
-- name: MB Digital Banking For Business Customers
-  period: "02/2020 - 05/2020"
-  position: Automation Tester
-  responsibilities:
-    - Defining and building test framework using Appium + Serenity BDD
-    - Writing feature files following requirement
-    - Develop automation scripts
-    - Run scripts and report result
+  - name: "MB Digital Banking For Business Customers"
+    position: "Automation Tester"
+    responsibilities:
+      - "Xây dựng framework kiểm thử tự động cho ứng dụng mobile banking doanh nghiệp sử dụng Appium + Serenity BDD."
+      - "Phân tích yêu cầu nghiệp vụ, viết feature files (Gherkin) và phát triển automation scripts cho các luồng giao dịch doanh nghiệp."
+      - "Chạy kiểm thử, phân tích kết quả và báo cáo lỗi chi tiết cho team phát triển."
 
-- name: MC BPM (Loan management)
-  period: "06/2019 - 02/2020"
-  position: Tester
-  responsibilities:
-    - Learning about the business system and writing test cases
-    - Execute and maintain automation test using Cucumber, Selenium
-    - Automation test services using Postman
-    - Writing test reports and user manual
+  - name: "MC BPM (Quản lý khoản vay)"
+    position: "Tester"
+    responsibilities:
+      - "Phân tích tài liệu nghiệp vụ hệ thống quản lý khoản vay, xây dựng bộ test case bao phủ các luồng xử lý hồ sơ vay."
+      - "Xây dựng và duy trì automation test sử dụng Cucumber + Selenium cho các luồng nghiệp vụ chính trên web."
+      - "Kiểm thử tự động các API dịch vụ bằng Postman, đảm bảo tính đúng đắn của dữ liệu trả về."
+      - "Lập báo cáo kiểm thử và viết tài liệu hướng dẫn sử dụng cho người dùng cuối."
 
-- name: ZeroBank application (Android)
-  period: "01/2019 - 05/2019"
-  position: Tester
-  responsibilities:
-    - Learning about the business system and writing test cases
-    - Training the business for teammates
-    - Testing the whole system
-    - Writing test reports and user manual
-    - Execute automation test with Cucumber and Appium
+  - name: "ZeroBank Application (Android)"
+    position: "Tester"
+    responsibilities:
+      - "Nghiên cứu nghiệp vụ ngân hàng số, xây dựng bộ test case toàn diện cho ứng dụng Android."
+      - "Thực hiện kiểm thử thủ công toàn bộ hệ thống, bao gồm kiểm thử chức năng, giao diện và hiệu năng."
+      - "Phát triển automation test sử dụng Cucumber + Appium cho các luồng nghiệp vụ quan trọng trên Android."
+      - "Đào tạo nghiệp vụ cho đồng nghiệp và lập báo cáo kiểm thử định kỳ."
+
+en:
+  - name: "TPB Core Banking"
+    position: "Automation Tester"
+    responsibilities:
+      - "Built an automation test framework from scratch for the Core Banking system, ensuring coverage of critical financial workflows."
+      - "Developed automation scripts to test core transaction flows, enabling early detection of regression bugs during system upgrades."
+      - "Conducted integration testing across modules during major system upgrade cycles."
+      - "Collaborated closely with dev and BA teams to analyze requirements, plan test strategies, and deliver regular test reports."
+
+  - name: "MB Digital Banking For Personal Customers"
+    position: "Automation Tester"
+    responsibilities:
+      - "Built a mobile automation test framework for the personal banking app using Appium + Serenity BDD (BDD approach)."
+      - "Wrote Gherkin feature files aligned with test cases, developed step definitions and automation scripts for key business flows."
+      - "Integrated the test suite into the CI/CD pipeline with Jenkins, ensuring automated tests ran on every build."
+      - "Performed regression and integration testing during system upgrades, minimizing the risk of production incidents."
+      - "Conducted live environment (production) testing after each deployment to verify system stability and business correctness."
+      - "Trained and mentored new team members on testing processes, test case writing, and framework usage."
+
+  - name: "MB Digital Banking For Business Customers"
+    position: "Automation Tester"
+    responsibilities:
+      - "Built a mobile automation test framework for the business banking app using Appium + Serenity BDD."
+      - "Analyzed business requirements, wrote Gherkin feature files, and developed automation scripts for enterprise transaction flows."
+      - "Executed tests, analyzed results, and reported detailed defects to the development team."
+
+  - name: "MC BPM (Loan Management)"
+    position: "Tester"
+    responsibilities:
+      - "Analyzed business documents for the loan management system and built a test case suite covering all major loan processing flows."
+      - "Built and maintained automation tests using Cucumber + Selenium for core web-based business workflows."
+      - "Automated API testing using Postman to validate service response data accuracy."
+      - "Produced test reports and wrote end-user documentation for the system."
+
+  - name: "ZeroBank Application (Android)"
+    position: "Tester"
+    responsibilities:
+      - "Studied digital banking business logic and built a comprehensive test case suite for the Android application."
+      - "Performed full system testing, including functional, UI, and performance testing."
+      - "Developed automation tests using Cucumber + Appium for critical business flows on Android."
+      - "Trained teammates on business processes and delivered regular test reports."
+
+zh:
+  - name: "TPB核心银行系统"
+    position: "自动化测试工程师"
+    responsibilities:
+      - "从零开始为核心银行系统构建自动化测试框架，确保关键金融业务流程的测试覆盖率。"
+      - "开发自动化脚本对核心交易流程进行测试，在系统升级过程中实现回归缺陷的早期发现。"
+      - "在重大系统升级周期中，对各模块执行集成测试。"
+      - "与开发和BA团队紧密协作，分析需求、制定测试策略并定期输出测试报告。"
+
+  - name: "MB个人数字银行"
+    position: "自动化测试工程师"
+    responsibilities:
+      - "使用Appium + Serenity BDD（BDD方法）为个人手机银行应用构建移动端自动化测试框架。"
+      - "根据测试用例编写Gherkin feature文件，开发step definitions和自动化脚本，覆盖核心业务流程。"
+      - "将测试套件集成到Jenkins CI/CD流水线，确保每次构建后自动执行测试。"
+      - "在系统升级期间执行回归测试和集成测试，最大程度降低生产环境出现问题的风险。"
+      - "每次部署后直接在生产环境执行测试，确认系统稳定运行且业务逻辑正确。"
+      - "对新团队成员进行测试流程、测试用例编写及框架使用的培训与指导。"
+
+  - name: "MB企业数字银行"
+    position: "自动化测试工程师"
+    responsibilities:
+      - "使用Appium + Serenity BDD为企业手机银行应用构建移动端自动化测试框架。"
+      - "分析业务需求，编写Gherkin feature文件，并为企业交易流程开发自动化脚本。"
+      - "执行测试、分析结果，并向开发团队提交详细的缺陷报告。"
+
+  - name: "MC BPM（贷款管理）"
+    position: "测试工程师"
+    responsibilities:
+      - "分析贷款管理系统的业务文档，构建覆盖所有主要贷款处理流程的测试用例集。"
+      - "使用Cucumber + Selenium构建并维护核心Web业务流程的自动化测试。"
+      - "使用Postman对API服务进行自动化测试，验证服务响应数据的准确性。"
+      - "输出测试报告并编写系统最终用户文档。"
+
+  - name: "ZeroBank应用（Android）"
+    position: "测试工程师"
+    responsibilities:
+      - "深入学习数字银行业务逻辑，为Android应用构建全面的测试用例集。"
+      - "执行完整的系统测试，包括功能测试、UI测试和性能测试。"
+      - "使用Cucumber + Appium为Android端关键业务流程开发自动化测试。"
+      - "对团队成员进行业务培训，并定期输出测试报告。"

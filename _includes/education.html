@@ -6,8 +6,7 @@
 
   <div id="education-list">
     {% assign lang = site.active_lang | default: "vi" %}
-    {% assign t = site.data.i18n[lang] %}
-    {% for entry in t.education %}
+    {% for entry in site.data.education[lang] %}
     <div class="cv-entry">
       <div class="entry-header">
         <div class="entry-header-left">

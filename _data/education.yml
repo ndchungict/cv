@@ -1,5 +1,20 @@
-- degree: "Công nghệ thông tin"
-  institution: "Trường Đại Học Bách Khoa Hà Nội"
-  start: "2009"
-  end: "2012"
-  description: "Hệ Cao Đẳng"
+vi:
+  - degree: "Công nghệ thông tin"
+    institution: "Trường Đại Học Bách Khoa Hà Nội"
+    start: "2009"
+    end: "2012"
+    description: "Hệ Cao Đẳng"
+
+en:
+  - degree: "Information Technology"
+    institution: "Hanoi University of Science and Technology"
+    start: "2009"
+    end: "2012"
+    description: "College Program"
+
+zh:
+  - degree: "信息技术"
+    institution: "河内理工大学"
+    start: "2009"
+    end: "2012"
+    description: "大专课程"

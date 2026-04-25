@@ -6,8 +6,7 @@
 
   <div id="projects-list">
     {% assign lang = site.active_lang | default: "vi" %}
-    {% assign t = site.data.i18n[lang] %}
-    {% for project in t.projects %}
+    {% for project in site.data.projects[lang] %}
     <div class="cv-entry">
       <h3 class="entry-title">{{ project.name }}</h3>
       <p class="entry-subtitle"><em>{{ project.position }}</em></p>

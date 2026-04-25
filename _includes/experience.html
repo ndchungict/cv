@@ -5,7 +5,8 @@
   </h2>
 
   <div id="experience-list">
-    {% for entry in site.data.experience %}
+    {% assign lang = site.active_lang | default: "vi" %}
+    {% for entry in site.data.experience[lang] %}
     <div class="cv-entry">
       <div class="entry-header">
         <div class="entry-header-left">
@@ -30,7 +31,8 @@
       {% endif %}
 
       {% if entry.achievements %}
-      <p class="entry-achievements-label">Những điều đạt được:</p>
+      {% assign t = site.data.i18n[lang] %}
+      <p class="entry-achievements-label">{{ t.sections.achievements_label | default: "Achievements:" }}</p>
       <ul class="entry-list">
         {% for item in entry.achievements %}
         <li>{{ item }}</li>

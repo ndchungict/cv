@@ -6,8 +6,7 @@
 
   <div id="skills-list">
     {% assign lang = site.active_lang | default: "vi" %}
-    {% assign t = site.data.i18n[lang] %}
-    {% for skill in t.skills %}
+    {% for skill in site.data.skills[lang] %}
     <div class="skill-category">
       <h3 class="category-name">{{ skill.category }}</h3>
       <p class="skill-description">{{ skill.description }}</p>
