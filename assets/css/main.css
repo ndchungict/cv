@@ -245,6 +245,24 @@ li {
   flex-shrink: 0;
   font-size: var(--font-size-base);
   line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+.contact-icon svg {
+  display: block;
+  color: var(--color-accent);
+}
+
+.contact-icon img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .contact-item a {

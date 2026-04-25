@@ -17,6 +17,7 @@
           {% if p.address %}
             <span id="profile-address" class="profile-address">{{ p.address }}</span>
           {% endif %}
+          {% if base.website %}<a href="{{ base.website }}" target="_blank" rel="noopener">Website</a>{% endif %}
           {% if base.linkedin %}<a href="{{ base.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
           {% if base.github %}<a href="{{ base.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
         </div>

@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "Jekyll Local",
+  "description": "Sau khi chỉnh sửa file HTML, YAML, JS, CSS hoặc Markdown, tự động rebuild Jekyll để preview local luôn cập nhật tại http://127.0.0.1:4000",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.html",
+      "**/*.yml",
+      "**/*.yaml",
+      "**/*.js",
+      "**/*.css",
+      "**/*.md"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "bundle exec jekyll build --baseurl \"\""
+  },
+  "workspaceFolderName": "cv-page",
+  "shortName": "jekyll-local-preview"
+}

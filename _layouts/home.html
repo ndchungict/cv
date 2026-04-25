@@ -45,32 +45,58 @@ layout: default
     <div class="sidebar-contact">
       {% if site.data.profile.phone %}
       <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">📞</span>
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/phone.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
         <span>{{ site.data.profile.phone }}</span>
       </div>
       {% endif %}
       {% if site.data.profile.dob %}
       <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">🎂</span>
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/birthday.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
         <span>{{ site.data.profile.dob }}</span>
       </div>
       {% endif %}
       {% if site.data.profile.address %}
       <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">📍</span>
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/address.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
         <span>{{ site.data.profile.address }}</span>
       </div>
       {% endif %}
       {% if site.data.profile.email %}
       <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">✉️</span>
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/email.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
         <a href="mailto:{{ site.data.profile.email }}">{{ site.data.profile.email }}</a>
       </div>
       {% endif %}
-      {% if site.data.profile.facebook %}
+      {% if site.data.profile.website %}
       <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">🌐</span>
-        <span>{{ site.data.profile.facebook }}</span>
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/website.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
+        <a href="{{ site.data.profile.website }}" target="_blank" rel="noopener">{{ site.data.profile.website | remove: "https://" }}</a>
+      </div>
+      {% endif %}
+      {% if site.data.profile.linkedin %}
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/linkedin.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
+        <a href="{{ site.data.profile.linkedin }}" target="_blank" rel="noopener">{{ site.data.profile.linkedin | remove: "https://" | remove: "www." }}</a>
+      </div>
+      {% endif %}
+      {% if site.data.profile.github %}
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/github.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
+        <a href="{{ site.data.profile.github }}" target="_blank" rel="noopener">{{ site.data.profile.github | remove: "https://" | remove: "www." }}</a>
       </div>
       {% endif %}
     </div>
