@@ -12,7 +12,7 @@ const EDUCATION_DATA = {{ site.data.education | jsonify }};
 const SKILLS_DATA = {{ site.data.skills | jsonify }};
 const PROJECTS_DATA = {{ site.data.projects | jsonify }};
 
-const DEFAULT_LANG = 'vi';
+const DEFAULT_LANG = 'en';
 const STORAGE_KEY = 'cv_lang';
 
 /**

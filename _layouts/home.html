@@ -2,6 +2,12 @@
 layout: default
 ---
 
+{% assign lang = site.active_lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign skills_data = site.data.skills[lang] %}
+{% assign edu_data = site.data.education[lang] %}
+{% assign profile_data = site.data.profile[lang] %}
+
 <!-- ===== TOP MENU BAR (outside CV frame) ===== -->
 <nav class="top-menu no-print" role="navigation" aria-label="CV controls">
   <div class="top-menu-inner">
@@ -34,8 +40,8 @@ layout: default
     </div>
     <div class="top-menu-controls">
       <div class="language-switcher" role="group" aria-label="Chọn ngôn ngữ">
-        <button onclick="applyLanguage('vi')" data-lang="vi" aria-pressed="true">VI</button>
         <button onclick="applyLanguage('en')" data-lang="en" aria-pressed="false">EN</button>
+        <button onclick="applyLanguage('vi')" data-lang="vi" aria-pressed="false">VI</button>
         <button onclick="applyLanguage('zh')" data-lang="zh" aria-pressed="false">ZH</button>
       </div>
       <div class="top-menu-divider" aria-hidden="true"></div>
@@ -77,20 +83,20 @@ layout: default
         <span>{{ site.data.profile.phone }}</span>
       </div>
       {% endif %}
+      {% if profile_data.address %}
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">
+          <img src="{{ '/imgs/address.png' | relative_url }}" width="16" height="16" alt="">
+        </span>
+        <span id="profile-address">{{ profile_data.address }}</span>
+      </div>
+      {% endif %}
       {% if site.data.profile.dob %}
       <div class="contact-item">
         <span class="contact-icon" aria-hidden="true">
           <img src="{{ '/imgs/birthday.png' | relative_url }}" width="16" height="16" alt="">
         </span>
         <span>{{ site.data.profile.dob }}</span>
-      </div>
-      {% endif %}
-      {% if site.data.profile.address %}
-      <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">
-          <img src="{{ '/imgs/address.png' | relative_url }}" width="16" height="16" alt="">
-        </span>
-        <span>{{ site.data.profile.address }}</span>
       </div>
       {% endif %}
       {% if site.data.profile.email %}
@@ -128,15 +134,13 @@ layout: default
     </div>
 
     <!-- Skills -->
-    {% assign lang = site.active_lang | default: "vi" %}
-    {% assign t = site.data.i18n[lang] %}
     <div class="sidebar-section">
       <h2 class="sidebar-section-title" data-i18n="nav.skills">
         <span class="sidebar-section-icon" aria-hidden="true">★</span>
-        Kỹ Năng
+        {{ t.nav.skills | default: "Kỹ Năng" }}
       </h2>
       <div id="sidebar-skills-list">
-        {% for skill in t.skills %}
+        {% for skill in skills_data %}
         <div class="sidebar-skill">
           <strong>{{ skill.category }}:</strong>
           <span>{{ skill.description }}</span>
@@ -149,10 +153,10 @@ layout: default
     <div class="sidebar-section">
       <h2 class="sidebar-section-title" data-i18n="nav.education">
         <span class="sidebar-section-icon" aria-hidden="true">🎓</span>
-        Học Vấn
+        {{ t.nav.education | default: "Học Vấn" }}
       </h2>
       <div id="sidebar-education-list">
-        {% for entry in t.education %}
+        {% for entry in edu_data %}
         <div class="sidebar-education-entry">
           <strong class="sidebar-edu-institution">{{ entry.institution }}</strong>
           <span class="sidebar-edu-degree">{{ entry.degree }}</span>
@@ -192,10 +196,10 @@ layout: default
     <div class="sidebar-section">
       <h2 class="sidebar-section-title" data-i18n="sections.hobbies_title">
         <span class="sidebar-section-icon" aria-hidden="true">♥</span>
-        Sở Thích
+        {{ t.sections.hobbies_title | default: "Sở Thích" }}
       </h2>
       <ul id="hobbies-list" style="list-style:none;padding:0;margin:0;">
-        {% for hobby in t.profile.hobbies %}
+        {% for hobby in profile_data.hobbies %}
         <li>
           <div class="sidebar-hobby">
             <span class="hobby-icon" aria-hidden="true">{{ hobby.icon }}</span>
@@ -224,10 +228,10 @@ layout: default
 
     <!-- Profile header -->
     <div id="about" class="main-profile-header">
-      <h1 id="profile-name" class="main-name">{{ site.data.profile.name }}</h1>
-      <p id="profile-title" class="main-title">{{ t.profile.title | default: site.data.profile.title }}</p>
-      {% if site.data.profile.summary %}
-      <p id="profile-summary" class="main-summary">{{ t.profile.summary | default: site.data.profile.summary }}</p>
+      <h1 id="profile-name" class="main-name">{{ profile_data.name | default: site.data.profile.name }}</h1>
+      <p id="profile-title" class="main-title">{{ profile_data.title | default: site.data.profile.title }}</p>
+      {% if profile_data.summary %}
+      <p id="profile-summary" class="main-summary">{{ profile_data.summary }}</p>
       {% endif %}
     </div>
 
