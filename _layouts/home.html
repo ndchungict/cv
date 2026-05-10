@@ -83,6 +83,7 @@ layout: default
         <span>{{ site.data.profile.phone }}</span>
       </div>
       {% endif %}
+      {% comment %}
       {% if profile_data.address %}
       <div class="contact-item">
         <span class="contact-icon" aria-hidden="true">
@@ -91,6 +92,7 @@ layout: default
         <span id="profile-address">{{ profile_data.address }}</span>
       </div>
       {% endif %}
+      {% endcomment %}
       {% if site.data.profile.dob %}
       <div class="contact-item">
         <span class="contact-icon" aria-hidden="true">
